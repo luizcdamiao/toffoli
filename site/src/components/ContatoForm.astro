@@ -1,0 +1,163 @@
+---
+import { assuntos, empresa } from '../data/site';
+---
+
+<form class="form" id="form-contato" method="post" action="/api/contato" novalidate>
+  <div class="form__duo">
+    <div class="campo">
+      <label for="f-nome">Nome</label>
+      <input id="f-nome" name="nome" type="text" autocomplete="name" required maxlength="120" />
+      <p class="erro" id="e-nome"></p>
+    </div>
+    <div class="campo">
+      <label for="f-empresa">Empresa <span class="op">(opcional)</span></label>
+      <input id="f-empresa" name="empresa" type="text" autocomplete="organization" maxlength="120" />
+    </div>
+  </div>
+  <div class="form__duo">
+    <div class="campo">
+      <label for="f-tel">Telefone ou WhatsApp</label>
+      <input id="f-tel" name="telefone" type="tel" autocomplete="tel" inputmode="tel" required maxlength="30" />
+      <p class="erro" id="e-telefone"></p>
+    </div>
+    <div class="campo">
+      <label for="f-email">E-mail</label>
+      <input id="f-email" name="email" type="email" autocomplete="email" required maxlength="160" />
+      <p class="erro" id="e-email"></p>
+    </div>
+  </div>
+  <div class="campo">
+    <label for="f-assunto">Assunto</label>
+    <select id="f-assunto" name="assunto" required>
+      <option value="">Selecione</option>
+      {assuntos.map((a) => <option value={a.valor}>{a.rotulo}</option>)}
+    </select>
+    <p class="erro" id="e-assunto"></p>
+  </div>
+  <p class="aviso-curriculo" id="aviso-curriculo" hidden>
+    Para candidaturas, escreva um resumo da sua experiência na mensagem e envie o currículo para
+    <a href={`mailto:${empresa.email}`}>{empresa.email}</a>.
+  </p>
+  <div class="campo">
+    <label for="f-msg">Mensagem</label>
+    <textarea id="f-msg" name="mensagem" required minlength="10" maxlength="3000"></textarea>
+    <p class="erro" id="e-mensagem"></p>
+  </div>
+
+  <!-- Proteção contra spam: campo que humanos não veem e marca de tempo -->
+  <div class="hp" aria-hidden="true">
+    <label for="f-site">Não preencha este campo</label>
+    <input id="f-site" name="site" type="text" tabindex="-1" autocomplete="off" />
+  </div>
+  <input type="hidden" name="t" id="f-t" value="" />
+
+  <div>
+    <label class="consent" for="f-consent">
+      <input id="f-consent" name="consentimento" type="checkbox" value="sim" required />
+      <span>
+        Concordo que a Toffoli &amp; Antônio use os dados informados para responder a esta mensagem, candidatura ou
+        proposta.
+      </span>
+    </label>
+    <p class="erro" id="e-consentimento"></p>
+  </div>
+
+  <button class="btn" type="submit">Enviar mensagem</button>
+  <div class="status" id="status" role="status" aria-live="polite"></div>
+  <noscript><p class="privacidade">Sem JavaScript, escreva para <a href={`mailto:${empresa.email}`}>{empresa.email}</a>.</p></noscript>
+</form>
+
+<script>
+  const form = document.getElementById('form-contato') as HTMLFormElement | null;
+  if (form) {
+    const status = document.getElementById('status')!;
+    const btn = form.querySelector<HTMLButtonElement>('button[type=submit]')!;
+    const select = form.elements.namedItem('assunto') as HTMLSelectElement;
+    const aviso = document.getElementById('aviso-curriculo')!;
+    (document.getElementById('f-t') as HTMLInputElement).value = String(Date.now());
+
+    const atualizarAviso = () => {
+      aviso.hidden = select.value !== 'trabalhe-conosco';
+    };
+    select.addEventListener('change', atualizarAviso);
+
+    const aplicarAssunto = (valor: string | null) => {
+      if (valor && [...select.options].some((o) => o.value === valor)) {
+        select.value = valor;
+        atualizarAviso();
+      }
+    };
+    aplicarAssunto(new URLSearchParams(location.search).get('assunto'));
+    document.querySelectorAll<HTMLAnchorElement>('a[data-assunto]').forEach((a) =>
+      a.addEventListener('click', () => aplicarAssunto(a.dataset.assunto ?? null)),
+    );
+
+    const campos = ['nome', 'telefone', 'email', 'assunto', 'mensagem', 'consentimento'];
+    const limpar = () => {
+      campos.forEach((c) => {
+        const e = document.getElementById('e-' + c);
+        if (e) e.textContent = '';
+        (form.elements.namedItem(c) as HTMLElement | null)?.removeAttribute('aria-invalid');
+      });
+    };
+    const marcar = (erros: Record<string, string>) => {
+      let primeiro: HTMLElement | null = null;
+      for (const [c, msg] of Object.entries(erros)) {
+        const e = document.getElementById('e-' + c);
+        const el = form.elements.namedItem(c) as HTMLElement | null;
+        if (e) e.textContent = msg;
+        if (el) {
+          el.setAttribute('aria-invalid', 'true');
+          el.setAttribute('aria-describedby', 'e-' + c);
+          primeiro ??= el;
+        }
+      }
+      primeiro?.focus();
+    };
+
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      limpar();
+      status.className = 'status';
+      status.textContent = '';
+      const d = new FormData(form);
+      const erros: Record<string, string> = {};
+      if (!String(d.get('nome') ?? '').trim()) erros.nome = 'Informe seu nome.';
+      if (String(d.get('telefone') ?? '').replace(/\D/g, '').length < 8) erros.telefone = 'Informe um telefone válido.';
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(d.get('email') ?? ''))) erros.email = 'Informe um e-mail válido.';
+      if (!d.get('assunto')) erros.assunto = 'Escolha um assunto.';
+      if (String(d.get('mensagem') ?? '').trim().length < 10) erros.mensagem = 'Escreva uma mensagem com pelo menos 10 caracteres.';
+      if (!d.get('consentimento')) erros.consentimento = 'É preciso concordar para enviar.';
+      if (Object.keys(erros).length) return marcar(erros);
+
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+      try {
+        const r = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: d,
+        });
+        const j = await r.json().catch(() => ({}));
+        if (r.ok && j.ok) {
+          form.reset();
+          (document.getElementById('f-t') as HTMLInputElement).value = String(Date.now());
+          atualizarAviso();
+          status.className = 'status ok';
+          status.textContent = 'Mensagem enviada. A equipe responderá pelos dados informados.';
+        } else if (j.erros) {
+          marcar(j.erros);
+        } else {
+          status.className = 'status falha';
+          status.textContent = j.mensagem || 'Não foi possível enviar agora. Tente novamente ou fale pelo WhatsApp.';
+        }
+      } catch {
+        status.className = 'status falha';
+        status.textContent = 'Sem conexão com o servidor. Tente novamente ou fale pelo WhatsApp.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Enviar mensagem';
+      }
+    });
+  }
+</script>

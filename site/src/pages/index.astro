@@ -1,0 +1,248 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import ServicoBloco from '../components/ServicoBloco.astro';
+import ContatoForm from '../components/ContatoForm.astro';
+import Rodape from '../components/Rodape.astro';
+import WhatsApp from '../components/WhatsApp.astro';
+import escudo from '../assets/escudo.png';
+import { foto } from '../data/fotos';
+import {
+  empresa, estruturas, caldeiraria, outrasSolucoes, segmentos, regioesPrincipais, regioesOcasionais,
+  processo, diferenciais, treinamentos, faq, produtos, projetos,
+} from '../data/site';
+
+const titulo = 'Estruturas Metálicas e Caldeiraria em Andradas, MG | Toffoli & Antônio';
+const descricao =
+  'Estruturas metálicas, coberturas e caldeiraria industrial em Andradas, MG. Experiência na área desde 1994, atendendo indústrias, agronegócio e clientes residenciais na região.';
+
+const fotoHero = foto('hero');
+const fotoEmpresa = foto('empresa');
+const lista = (itens: string[]) => {
+  const ini = itens.slice(0, -1).join(', ');
+  return `${ini} e ${itens[itens.length - 1]}`;
+};
+---
+
+<Base titulo={titulo} descricao={descricao}>
+  <Header />
+  <main id="conteudo">
+    <!-- HERO -->
+    <section class={`hero ${fotoHero ? 'hero--foto' : ''}`} id="topo" aria-labelledby="h1">
+      {
+        fotoHero ? (
+          <div class="hero__foto">
+            <Image src={fotoHero} alt="Estrutura metálica executada pela Toffoli & Antônio" widths={[640, 1024, 1600]} sizes="100vw" loading="eager" fetchpriority="high" />
+          </div>
+        ) : (
+          <div class="hero__arte"><Image src={escudo} alt="" width={460} loading="eager" /></div>
+        )
+      }
+      <div class="wrap hero__grade">
+        <div>
+          <h1 id="h1">Estruturas Metálicas e Caldeiraria</h1>
+          <p class="hero__apoio">
+            Soluções para indústrias, agronegócio e projetos residenciais, com experiência e compromisso em cada trabalho.
+          </p>
+          <a class="hero__link" href="#servicos">Conheça nossas soluções <span aria-hidden="true">↓</span></a>
+          <p class="hero__local">{empresa.endereco.cidade}, {empresa.endereco.uf}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESTAQUES (cartões sobre o hero) -->
+    <section class="destaques" aria-label="Áreas de atuação">
+      <div class="wrap destaques__grade">
+        <article class="card">
+          <h2 style="font:600 1.375rem/1.2 var(--serif)">Estruturas Metálicas</h2>
+          <p>Barracões industriais e rurais, estruturas para telhados e coberturas com telhas galvanizadas ou termoacústicas.</p>
+          <a href="#estruturas-metalicas">Ver detalhes</a>
+        </article>
+        <article class="card">
+          <h2 style="font:600 1.375rem/1.2 var(--serif)">Caldeiraria</h2>
+          <p>Plataformas, estruturas para máquinas, coifas, dutos, silos, tanques e manutenções industriais.</p>
+          <a href="#caldeiraria">Ver detalhes</a>
+        </article>
+        <article class="card card--menor">
+          <h2 style="font:600 1.375rem/1.2 var(--serif)">Outras soluções</h2>
+          <p>Telhados residenciais, pergolados, portões, grades e serviços de torno e fresa.</p>
+          <a href="#outras-solucoes">Ver detalhes</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- EMPRESA -->
+    <section id="empresa" class="secao clara" aria-labelledby="empresa-t">
+      <div class="wrap empresa__grade">
+        <div class="rev">
+          <p class="eyebrow">A empresa</p>
+          <h2 id="empresa-t">{empresa.experiencia}</h2>
+          <p class="lead" style="margin-top:20px">
+            A Toffoli &amp; Antônio atua com estruturas metálicas e caldeiraria para indústrias, propriedades rurais e clientes
+            residenciais de Andradas e região.
+          </p>
+          <p class="texto" style="margin-top:16px">
+            O trabalho é conduzido com compromisso, agilidade no atendimento e acompanhamento depois da entrega.
+          </p>
+        </div>
+        <div class={`painel rev empresa__foto ${fotoEmpresa ? '' : 'painel--marca'}`}>
+          {
+            fotoEmpresa ? (
+              <Image src={fotoEmpresa} alt="Equipe e instalações da Toffoli & Antônio" widths={[480, 720, 960]} sizes="(min-width: 980px) 520px, 92vw" loading="lazy" />
+            ) : (
+              <Image src={escudo} alt="" width={240} loading="lazy" />
+            )
+          }
+          <p class="selo">Experiência na área<br /><strong>desde 1994</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS PRINCIPAIS -->
+    <div id="servicos">
+      <ServicoBloco
+        id="estruturas-metalicas" titulo="Estruturas Metálicas" tom="cinza"
+        intro="Estruturas para abrigar, armazenar e produzir: barracões industriais e rurais, estruturas de telhado e coberturas, com opção de forro e fechamento lateral."
+        itens={estruturas} chaveFoto="estruturas-metalicas" altFoto="Estrutura metálica com cobertura executada pela Toffoli & Antônio"
+      />
+      <ServicoBloco
+        id="caldeiraria" titulo="Caldeiraria" tom="escura" inverso
+        intro="Serviços de caldeiraria e manutenção para o ambiente industrial, incluindo estruturas de apoio, equipamentos sob medida e adaptações."
+        itens={caldeiraria} chaveFoto="caldeiraria" altFoto="Serviço de caldeiraria executado pela Toffoli & Antônio"
+      />
+    </div>
+
+    <!-- OUTRAS SOLUÇÕES -->
+    <section id="outras-solucoes" class="secao clara" aria-labelledby="outras-t">
+      <div class="wrap outras__grade">
+        <div class="rev">
+          <p class="eyebrow">Também realizamos</p>
+          <h2 id="outras-t">Outras soluções</h2>
+        </div>
+        <ul class="chips rev">{outrasSolucoes.map((s) => <li>{s}</li>)}</ul>
+      </div>
+    </section>
+
+    <!-- SEGMENTOS E REGIÕES -->
+    <section id="segmentos" class="secao cinza" aria-labelledby="seg-t">
+      <div class="wrap">
+        <p class="eyebrow">Quem atendemos</p>
+        <h2 id="seg-t">Segmentos e regiões atendidas</h2>
+        <div class="segmentos">
+          {segmentos.map((s) => <article class="rev"><h3>{s.titulo}</h3><p>{s.texto}</p></article>)}
+        </div>
+        <div class="regioes rev">
+          <h3>Onde atuamos</h3>
+          <p>
+            Atendemos principalmente {lista(regioesPrincipais)}. Com menor frequência, também atuamos em {lista(regioesOcasionais)}.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO TRABALHAMOS -->
+    <section id="como-trabalhamos" class="secao clara" aria-labelledby="proc-t">
+      <div class="wrap">
+        <p class="eyebrow">Atendimento</p>
+        <h2 id="proc-t">Como trabalhamos</h2>
+        <ol class="passos">
+          {processo.map((p) => <li class="rev"><h3>{p.titulo}</h3><p>{p.texto}</p></li>)}
+        </ol>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAIS E EQUIPE -->
+    <section id="diferenciais" class="secao escura" aria-labelledby="dif-t">
+      <div class="wrap">
+        <p class="eyebrow">Diferenciais</p>
+        <h2 id="dif-t">O que você encontra na Toffoli &amp; Antônio</h2>
+        <ul class="dif">
+          {diferenciais.map((d) => <li class="rev"><h3>{d.titulo}</h3><p>{d.texto}</p></li>)}
+        </ul>
+        <p class="treino">{treinamentos}</p>
+      </div>
+    </section>
+
+    {
+      produtos.length > 0 && (
+        <section id="produtos" class="secao clara" aria-labelledby="prod-t">
+          <div class="wrap">
+            <p class="eyebrow">Catálogo</p>
+            <h2 id="prod-t">Produtos</h2>
+            <div class="galeria">
+              {produtos.map((p) => (
+                <figure><img src={p.imagem} alt={p.nome} loading="lazy" /><figcaption><strong>{p.nome}</strong>{p.descricao}</figcaption></figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+    {
+      projetos.length > 0 && (
+        <section id="projetos" class="secao cinza" aria-labelledby="proj-t">
+          <div class="wrap">
+            <p class="eyebrow">Obras</p>
+            <h2 id="proj-t">Projetos realizados</h2>
+            <div class="galeria">
+              {projetos.map((p) => (
+                <figure><img src={p.imagem} alt={p.titulo} loading="lazy" /><figcaption><strong>{p.titulo}</strong>{p.descricao}</figcaption></figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
+
+    <!-- FAQ -->
+    <section id="faq" class="secao clara" aria-labelledby="faq-t">
+      <div class="wrap">
+        <p class="eyebrow">Dúvidas</p>
+        <h2 id="faq-t">Perguntas frequentes</h2>
+        <div class="faq">
+          {faq.map((f) => <details><summary>{f.p}</summary><p>{f.r}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="secao cinza" aria-labelledby="contato-t">
+      <div class="wrap contato__grade">
+        <div>
+          <p class="eyebrow">Contato</p>
+          <h2 id="contato-t">Fale com a equipe</h2>
+          <p class="lead" style="margin-top:18px">
+            Para orçamentos, dúvidas, candidaturas ou propostas de parceria, use o formulário ou um dos contatos abaixo.
+          </p>
+          <dl class="dados">
+            <div><dt>WhatsApp e telefone</dt><dd><a href={`https://wa.me/${empresa.whatsapp}`} rel="noopener">{empresa.telefone}</a></dd></div>
+            <div><dt>E-mail</dt><dd><a href={`mailto:${empresa.email}`}>{empresa.email}</a></dd></div>
+            <div>
+              <dt>Endereço</dt>
+              <dd>{empresa.endereco.rua}<br />{empresa.endereco.cidade}, {empresa.endereco.uf} · CEP {empresa.endereco.cep}</dd>
+            </div>
+          </dl>
+        </div>
+        <div>
+          <ContatoForm />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Rodape />
+  <WhatsApp />
+
+  <script>
+    const alvos = document.querySelectorAll('.rev');
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const io = new IntersectionObserver(
+        (es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } }),
+        { rootMargin: '0px 0px -8% 0px' },
+      );
+      alvos.forEach((a) => io.observe(a));
+    } else {
+      alvos.forEach((a) => a.classList.add('vis'));
+    }
+  </script>
+</Base>

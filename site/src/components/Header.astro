@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import escudo from '../assets/escudo.png';
+import { empresa, produtos, projetos } from '../data/site';
+
+// Produtos e Projetos só entram no menu quando houver conteúdo autorizado.
+const itens = [
+  { href: '#empresa', rotulo: 'Empresa' },
+  { href: '#servicos', rotulo: 'Serviços' },
+  ...(produtos.length ? [{ href: '#produtos', rotulo: 'Produtos' }] : []),
+  ...(projetos.length ? [{ href: '#projetos', rotulo: 'Projetos' }] : []),
+];
+---
+
+<header class="header">
+  <div class="wrap header__in">
+    <a class="marca" href="#topo" aria-label={`${empresa.nome}, início`}>
+      <Image src={escudo} alt="" width={42} loading="eager" />
+      <span>
+        <span class="marca__nome">{empresa.nome}</span>
+        <span class="marca__sub">Estruturas Metálicas</span>
+      </span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+    <nav class="nav" id="menu" aria-label="Principal">
+      {itens.map((i) => <a href={i.href}>{i.rotulo}</a>)}
+      <a class="nav__contato" href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
+  const nav = document.getElementById('menu');
+  if (btn && nav) {
+    const fechar = () => {
+      nav.classList.remove('aberto');
+      btn.setAttribute('aria-expanded', 'false');
+    };
+    btn.addEventListener('click', () => {
+      const aberto = nav.classList.toggle('aberto');
+      btn.setAttribute('aria-expanded', String(aberto));
+    });
+    nav.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) fechar();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') fechar();
+    });
+  }
+</script>

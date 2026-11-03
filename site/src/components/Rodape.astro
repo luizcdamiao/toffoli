@@ -1,0 +1,50 @@
+---
+import { empresa, produtos, projetos } from '../data/site';
+const ano = new Date().getFullYear();
+const secoes = [
+  { href: '#empresa', rotulo: 'Empresa' },
+  { href: '#servicos', rotulo: 'Serviços' },
+  ...(produtos.length ? [{ href: '#produtos', rotulo: 'Produtos' }] : []),
+  ...(projetos.length ? [{ href: '#projetos', rotulo: 'Projetos' }] : []),
+  { href: '#contato', rotulo: 'Contato' },
+];
+---
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape__grade">
+      <div>
+        <h2>{empresa.nome}</h2>
+        <address>
+          {empresa.slogan}<br />
+          {empresa.endereco.rua}<br />
+          {empresa.endereco.cidade}, {empresa.endereco.uf} · CEP {empresa.endereco.cep}
+        </address>
+      </div>
+      <div>
+        <h2>Navegação</h2>
+        <ul>{secoes.map((s) => <li><a href={s.href}>{s.rotulo}</a></li>)}</ul>
+      </div>
+      <div>
+        <h2>Participe</h2>
+        <ul>
+          <li><a href="#contato" data-assunto="trabalhe-conosco">Trabalhe Conosco</a></li>
+          <li><a href="#contato" data-assunto="parceiro-fornecedor">Seja um Parceiro / Fornecedor</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Contato</h2>
+        <ul>
+          <li><a href={`https://wa.me/${empresa.whatsapp}`} rel="noopener">WhatsApp {empresa.telefone}</a></li>
+          <li><a href={`mailto:${empresa.email}`}>{empresa.email}</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="rodape__fim">
+      <p>© {ano} {empresa.nome}. Todos os direitos reservados.</p>
+      <p>
+        Os dados enviados pelo formulário são usados apenas para responder ao seu contato, candidatura ou proposta de parceria.
+      </p>
+    </div>
+  </div>
+</footer>

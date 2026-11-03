@@ -1,0 +1,93 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/source-serif-4';
+import '../styles/global.css';
+import { empresa, faq, regioesPrincipais, regioesOcasionais } from '../data/site';
+
+interface Props {
+  titulo: string;
+  descricao: string;
+}
+const { titulo, descricao } = Astro.props;
+
+const producao = import.meta.env.SITE_ENV === 'production' && !!Astro.site;
+const base = Astro.site ? Astro.site.toString().replace(/\/$/, '') : '';
+const canonical = producao ? `${base}/` : undefined;
+const og = base ? `${base}/og.jpg` : '/og.jpg';
+
+const areas = [...regioesPrincipais, ...regioesOcasionais].map((n) => ({ '@type': 'City', name: n }));
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['LocalBusiness', 'Organization'],
+      '@id': `${base}/#empresa`,
+      name: empresa.nome,
+      description: descricao,
+      ...(producao ? { url: `${base}/`, image: og } : {}),
+      telephone: empresa.telefoneE164,
+      email: empresa.email,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: empresa.endereco.rua,
+        addressLocality: empresa.endereco.cidade,
+        addressRegion: empresa.endereco.uf,
+        postalCode: empresa.endereco.cep,
+        addressCountry: 'BR',
+      },
+      areaServed: areas,
+      knowsAbout: ['Estruturas metálicas', 'Caldeiraria industrial'],
+    },
+    {
+      '@type': 'Service',
+      name: 'Estruturas Metálicas',
+      provider: { '@id': `${base}/#empresa` },
+      areaServed: areas,
+    },
+    {
+      '@type': 'Service',
+      name: 'Caldeiraria',
+      provider: { '@id': `${base}/#empresa` },
+      areaServed: areas,
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.p,
+        acceptedAnswer: { '@type': 'Answer', text: f.r },
+      })),
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="pt-BR" class="sem-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo}</title>
+    <meta name="description" content={descricao} />
+    <meta name="theme-color" content="#001e3d" />
+    <meta name="robots" content={producao ? 'index, follow' : 'noindex, nofollow'} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content={empresa.nome} />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>document.documentElement.classList.remove('sem-js');</script>
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip" href="#conteudo">Ir para o conteúdo</a>
+    <slot />
+  </body>
+</html>

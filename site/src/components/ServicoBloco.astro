@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import escudo from '../assets/escudo.png';
+import { foto } from '../data/fotos';
+
+interface Props {
+  id: string;
+  titulo: string;
+  intro: string;
+  itens: string[];
+  tom: 'clara' | 'escura' | 'cinza';
+  inverso?: boolean;
+  chaveFoto: string;
+  altFoto: string;
+}
+const { id, titulo, intro, itens, tom, inverso = false, chaveFoto, altFoto } = Astro.props;
+const imagem = foto(chaveFoto);
+---
+
+<section id={id} class={`secao ${tom} servico ${inverso ? 'servico--inverso' : ''}`} aria-labelledby={`${id}-t`}>
+  <div class="wrap servico__grade">
+    <div class="rev">
+      <p class="eyebrow">Serviço principal</p>
+      <h2 id={`${id}-t`}>{titulo}</h2>
+      <p class="lead" style="margin-top:18px">{intro}</p>
+      <ul class="servico__lista">
+        {itens.map((i) => <li>{i}</li>)}
+      </ul>
+    </div>
+    <div class={`painel rev ${imagem ? '' : 'painel--marca'}`}>
+      {
+        imagem ? (
+          <Image src={imagem} alt={altFoto} widths={[480, 720, 960]} sizes="(min-width: 980px) 560px, 92vw" loading="lazy" />
+        ) : (
+          <Image src={escudo} alt="" width={240} loading="lazy" />
+        )
+      }
+    </div>
+  </div>
+</section>
