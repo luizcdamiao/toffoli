@@ -148,15 +148,27 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 .selo strong { color: var(--branco); font: 600 1.375rem/1.3 var(--serif); }
 
 /* ---------- Serviços principais ---------- */
-.servico__grade { display: grid; gap: 36px; align-items: start; }
-.grupo { margin-top: 28px; }
-.grupo h3 { font: 600 0.75rem/1.2 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--cinza-texto); }
-.escura .grupo h3 { color: #9fb3c8; }
-.servico__lista { margin-top: 10px; columns: 1; }
-.servico__lista li { padding: 12px 0 12px 22px; position: relative; border-top: 1px solid var(--linha); break-inside: avoid; }
-.servico__lista li::before { content: ''; position: absolute; left: 0; top: 1.3em; width: 10px; height: 2px; background: var(--azul-2); }
-.escura .servico__lista li { border-color: rgb(255 255 255 / 0.14); }
-.escura .servico__lista li::before { background: #9fb3c8; }
+.servico__grade { display: grid; gap: 36px; align-items: center; }
+
+/* Cartões dos grupos de serviço */
+.cartoes { display: grid; gap: 16px; margin-top: 56px; }
+.cartao { background: var(--branco); border: 1px solid var(--linha); border-top: 3px solid var(--azul); border-radius: 12px; padding: 24px 24px 12px; box-shadow: 0 8px 24px -16px rgb(0 20 40 / 0.35); }
+.cartao h3 { font: 600 1.125rem/1.3 var(--serif); color: var(--azul); }
+.escura .cartao { background: rgb(255 255 255 / 0.06); border-color: rgb(255 255 255 / 0.14); border-top-color: #9fb3c8; box-shadow: none; }
+.escura .cartao h3, .escura .info h3 { color: var(--branco); }
+
+/* Lista com marcador em círculo */
+.checks { margin-top: 12px; }
+.checks li { position: relative; padding: 9px 0 9px 32px; line-height: 1.45; }
+.checks li::before { content: '\2713'; position: absolute; left: 0; top: 9px; width: 20px; height: 20px; border-radius: 50%; background: var(--azul); color: var(--branco); font: 700 0.6875rem/20px var(--sans); text-align: center; }
+.escura .checks li::before { background: #9fb3c8; color: var(--azul); }
+
+/* Explicações curtas ao lado de uma barra de destaque */
+.infos { display: grid; gap: 28px; margin-top: 40px; }
+.info { border-left: 4px solid var(--azul); padding: 4px 0 4px 22px; }
+.escura .info { border-left-color: #9fb3c8; }
+.info h3 { font: 600 1.25rem/1.3 var(--serif); color: var(--azul); }
+.servico__nota { margin-top: 36px; padding: 16px 20px; border-radius: 8px; background: rgb(255 255 255 / 0.08); border: 1px solid rgb(255 255 255 / 0.16); color: #dbe4ee; max-width: 70ch; }
 .painel { position: relative; aspect-ratio: 4 / 3; border-radius: 12px; overflow: hidden; background: var(--azul); }
 .painel img { width: 100%; height: 100%; object-fit: cover; }
 .painel--marca { display: grid; place-items: center; background: #002a52; }
@@ -320,7 +332,6 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 @media (min-width: 700px) {
   :root { --gutter: 32px; }
   .form__duo { grid-template-columns: 1fr 1fr; }
-  .servico__lista { columns: 2; column-gap: 32px; }
   .segmentos { grid-template-columns: repeat(3, 1fr); gap: 32px; }
   .segmentos article { padding-right: 8px; }
   .galeria { grid-template-columns: repeat(2, 1fr); }
@@ -350,8 +361,9 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .hero__foto::after { background: linear-gradient(90deg, rgb(0 30 61 / 0.92) 0%, rgb(0 30 61 / 0.62) 42%, rgb(0 30 61 / 0.12) 100%); }
   .empresa__grade { grid-template-columns: 5fr 6fr; gap: 80px; align-items: start; }
   .servico__grade { grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
-  .servico--inverso .painel { order: 2; }
-  .servico__lista { columns: 1; }
+  .servico--inverso .painel { order: -1; }
+  .cartoes { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .infos { grid-template-columns: 1fr 1fr; gap: 48px; }
   .outras__grade { grid-template-columns: 5fr 6fr; gap: 80px; align-items: start; }
   .passos { grid-template-columns: repeat(5, 1fr); gap: 28px; }
   .passos li { padding: 56px 8px 0 0; }
@@ -360,3 +372,7 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .rodape__grade { grid-template-columns: 1.4fr 1fr 1fr 1.2fr; gap: 48px; }
   .galeria { grid-template-columns: repeat(3, 1fr); }
 }
+
+.checks--grande { margin-top: 24px; }
+.checks--grande li { padding-block: 11px; font-size: 1.0625rem; color: #3b444e; }
+.checks--grande li::before { top: 12px; }

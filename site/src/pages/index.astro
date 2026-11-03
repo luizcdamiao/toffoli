@@ -80,14 +80,12 @@ const lista = (itens: string[]) => {
             A Toffoli &amp; Antônio trabalha com estruturas metálicas e caldeiraria em Andradas, no Sul de Minas, e atende
             indústrias, propriedades rurais e clientes residenciais da região.
           </p>
-          <p class="texto" style="margin-top:16px">
-            Do barracão à plataforma de manutenção, cada serviço parte de uma conversa: a equipe entende a necessidade, faz a
-            visita técnica quando o serviço pede e apresenta o orçamento em PDF antes de começar.
-          </p>
-          <p class="texto">
-            Compromisso com o trabalho, velocidade no atendimento e suporte depois da entrega são o que a empresa quer manter em
-            cada projeto.
-          </p>
+          <ul class="checks checks--grande">
+            <li>Do barracão à plataforma de manutenção, cada serviço parte de uma conversa: a equipe entende a necessidade.</li>
+            <li>Visita técnica quando o serviço pede.</li>
+            <li>Orçamento em PDF antes de começar.</li>
+            <li>Compromisso com o trabalho, velocidade no atendimento e suporte depois da entrega.</li>
+          </ul>
         </div>
         <div class={`painel rev empresa__foto ${fotoEmpresa ? '' : 'painel--marca'}`}>
           {
@@ -105,21 +103,49 @@ const lista = (itens: string[]) => {
     <!-- SERVIÇOS PRINCIPAIS -->
     <div id="servicos">
       <ServicoBloco
-        id="estruturas-metalicas" titulo="Estruturas metálicas para barracões e coberturas" tom="cinza"
+        id="estruturas-metalicas" titulo="Estruturas metálicas para barracões e coberturas" tom="cinza" inverso
         intro="Estruturas para cobrir, proteger e dar uso ao espaço de trabalho. Os barracões atendem a produção industrial e a rotina do campo; as coberturas podem usar telha galvanizada simples ou termoacústica, com forro e fechamento lateral quando o projeto pede."
-        detalhes={[
-          'Um barracão metálico é montado com pilares, vigas e tesouras de aço que sustentam a cobertura e deixam o espaço interno livre, o que facilita a circulação de máquinas, veículos e estoque.',
-          'A telha galvanizada simples é a opção mais direta para cobrir. A termoacústica leva uma camada isolante entre as chapas e costuma ser escolhida quando calor e ruído pesam no ambiente. Forro e fechamento lateral completam o acabamento, e a equipe orienta a escolha conforme o uso do espaço e o orçamento.',
+        destaques={[
+          {
+            titulo: 'Como é um barracão metálico',
+            itens: [
+              'Pilares, vigas e tesouras de aço sustentam a cobertura.',
+              'O espaço interno fica livre para circulação de máquinas, veículos e estoque.',
+            ],
+          },
+          {
+            titulo: 'Telha galvanizada ou termoacústica',
+            itens: [
+              'A galvanizada simples é a opção mais direta para cobrir.',
+              'A termoacústica leva uma camada isolante entre as chapas e costuma ser escolhida quando calor e ruído pesam.',
+              'Forro e fechamento lateral completam o acabamento.',
+              'A equipe orienta a escolha conforme o uso do espaço e o orçamento.',
+            ],
+          },
         ]}
         grupos={estruturas} chaveFoto="estruturas-metalicas" altFoto="Estrutura metálica com cobertura executada pela Toffoli & Antônio"
       />
       <ServicoBloco
-        id="caldeiraria" titulo="Caldeiraria industrial" tom="escura" inverso
+        id="caldeiraria" titulo="Caldeiraria industrial" tom="escura"
         intro="Peças e estruturas metálicas para a rotina da indústria: plataformas e escadas para acessar equipamentos durante a manutenção, apoios para máquinas, coifas, dutos, silos, tanques, caldeiras e chaminés, além de adaptações e manutenções industriais."
-        detalhes={[
-          'Caldeiraria é o trabalho de cortar, dobrar, soldar e montar chapas e perfis de aço para fabricar peças sob medida. Na indústria, isso aparece em tanques, silos, dutos, coifas e chaminés, que armazenam, conduzem ou captam materiais e ar.',
-          'Plataformas, escadas e corrimãos dão acesso a equipamentos na hora da manutenção; estruturas para máquinas e bancadas apoiam a operação; adaptações e manutenções ajustam o que já existe na planta. A equipe possui treinamentos em NR 06, NR 12, NR 34 e NR 35, que muitas empresas exigem de prestadores de serviço.',
+        destaques={[
+          {
+            titulo: 'O que é caldeiraria',
+            itens: [
+              'Cortar, dobrar, soldar e montar chapas e perfis de aço.',
+              'Peças sob medida, como tanques, silos, dutos, coifas e chaminés, que armazenam, conduzem ou captam materiais e ar.',
+            ],
+          },
+          {
+            titulo: 'Na rotina da indústria',
+            itens: [
+              'Plataformas, escadas e corrimãos dão acesso a equipamentos na manutenção.',
+              'Estruturas para máquinas e bancadas apoiam a operação.',
+              'Adaptações e manutenções ajustam o que já existe na planta.',
+            ],
+          },
         ]}
+        nota="A equipe possui treinamentos em NR 06, NR 12, NR 34 e NR 35, que muitas empresas exigem de prestadores de serviço."
         grupos={caldeiraria} chaveFoto="caldeiraria" altFoto="Serviço de caldeiraria executado pela Toffoli & Antônio"
       />
     </div>
