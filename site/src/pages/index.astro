@@ -10,7 +10,7 @@ import escudo from '../assets/escudo.png';
 import { foto } from '../data/fotos';
 import {
   empresa, estruturas, caldeiraria, outrasSolucoes, segmentos, regioesPrincipais, regioesOcasionais,
-  processo, diferenciais, treinamentos, faq, produtos, projetos, whatsappUrl,
+  processo, diferenciais, treinamentos, faq, produtos, projetos, whatsappUrl, google,
 } from '../data/site';
 
 const titulo = 'Estruturas Metálicas e Caldeiraria em Andradas, MG | Toffoli & Antônio';
@@ -238,6 +238,20 @@ const lista = (itens: string[]) => {
         </div>
         <div>
           <ContatoForm />
+        </div>
+        <div class="local">
+          <p class="local__nota">
+            <strong>{google.nota} no Google</strong> · {google.avaliacoes} avaliações de clientes<br />
+            <a href={google.perfilUrl} target="_blank" rel="noopener noreferrer">Ver avaliações no Google Maps</a>
+          </p>
+          <iframe
+            class="local__mapa"
+            title="Localização da Toffoli & Antônio no mapa"
+            src={google.mapaEmbed}
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <a class="local__rota" href={google.perfilUrl} target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
         </div>
       </div>
     </section>

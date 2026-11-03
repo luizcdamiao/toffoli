@@ -2,7 +2,7 @@
 import '@fontsource-variable/inter';
 import '@fontsource-variable/source-serif-4';
 import '../styles/global.css';
-import { empresa, faq, regioesPrincipais, regioesOcasionais } from '../data/site';
+import { empresa, google, faq, regioesPrincipais, regioesOcasionais } from '../data/site';
 
 interface Props {
   titulo: string;
@@ -27,6 +27,9 @@ const jsonLd = {
       ...(producao ? { url: `${base}/`, image: og } : {}),
       telephone: empresa.telefoneE164,
       email: empresa.email,
+      sameAs: [google.perfilUrl],
+      hasMap: google.perfilUrl,
+      geo: { '@type': 'GeoCoordinates', latitude: empresa.endereco.latitude, longitude: empresa.endereco.longitude },
       address: {
         '@type': 'PostalAddress',
         streetAddress: empresa.endereco.rua,

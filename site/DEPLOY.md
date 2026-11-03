@@ -26,7 +26,7 @@ Sem essas variáveis, o formulário responde com erro claro e não finge sucesso
 
 ## 3. Produção (só depois de aprovado)
 
-Antes: fotos reais no lugar das `*.provisoria.jpg` (o build de produção falha se sobrar alguma), CEP confirmado e domínio oficial definido.
+Antes: fotos reais no lugar das `*.provisoria.jpg` (o build de produção falha se sobrar alguma), CEP (já igual ao do Google Meu Negócio) e domínio oficial definido.
 
 Defina como **argumentos de build** (build args) do serviço:
 

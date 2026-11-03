@@ -13,9 +13,20 @@ export const empresa = {
     rua: 'Sítio Santo Antônio, Angola',
     cidade: 'Andradas',
     uf: 'MG',
-    // CEP do briefing. O site antigo usava 37842-899: confirmar com o cliente.
-    cep: '37795-000',
+    // Igual ao perfil no Google Meu Negócio e ao site antigo (o briefing trazia 37795-000).
+    cep: '37842-899',
+    latitude: -22.0640989,
+    longitude: -46.5850384,
   },
+} as const;
+
+// Perfil no Google Meu Negócio. A nota e a quantidade são do perfil em 03/11/2026: conferir antes de publicar.
+export const google = {
+  perfilUrl:
+    'https://www.google.com/maps/place/T%C3%B3ffoli+e+Ant%C3%B4nio/@-22.0637763,-46.5849572,16.75z/data=!4m6!3m5!1s0x94c9bde6431f2611:0xb5ab60b441aff994!8m2!3d-22.0640989!4d-46.5850384!16s%2Fg%2F11trqxzcq7',
+  mapaEmbed: 'https://www.google.com/maps?q=-22.0640989,-46.5850384&z=16&output=embed',
+  nota: '4,9',
+  avaliacoes: 18,
 } as const;
 
 export const whatsappUrl = `https://wa.me/${empresa.whatsapp}?text=${encodeURIComponent(empresa.whatsappMensagem)}`;
