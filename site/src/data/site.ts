@@ -118,12 +118,36 @@ export const treinamentos =
 
 export const faq = [
   {
+    p: 'Existe empresa de estruturas metálicas e caldeiraria em Andradas, MG?',
+    r: 'Sim. A Toffoli & Antônio fica no Sítio Santo Antônio, em Angola, Andradas (MG), e atua no setor desde 1994, com estruturas metálicas e caldeiraria para indústrias, agronegócio e clientes residenciais do Sul de Minas e do interior de São Paulo.',
+  },
+  {
     p: 'Quais tipos de estruturas metálicas a empresa executa?',
     r: 'Barracões industriais e para o agronegócio, estruturas para telhados, coberturas com telhas galvanizadas simples ou termoacústicas, soluções com forro e fechamentos laterais com telhas.',
   },
   {
     p: 'Quais serviços de caldeiraria são oferecidos?',
     r: 'Plataformas para manutenção, estruturas para máquinas, coifas, dutos, silos, tanques, caldeiras, chaminés, escadas, corrimãos, bancadas, adaptações industriais e manutenções industriais.',
+  },
+  {
+    p: 'O que é caldeiraria?',
+    r: 'É o trabalho de cortar, dobrar, soldar e montar chapas e perfis de aço para fabricar peças e equipamentos sob medida, como tanques, silos, dutos, coifas e chaminés.',
+  },
+  {
+    p: 'Qual a diferença entre telha galvanizada simples e telha termoacústica?',
+    r: 'A galvanizada simples é uma chapa única de aço galvanizado. A termoacústica leva uma camada isolante entre as chapas e costuma ser escolhida quando calor e ruído pesam no ambiente. A equipe orienta a escolha conforme o uso do espaço e o orçamento.',
+  },
+  {
+    p: 'A empresa faz serviços de torno e fresa?',
+    r: 'Sim. Além de estruturas metálicas e caldeiraria, a Toffoli & Antônio realiza serviços de usinagem em torno e fresa.',
+  },
+  {
+    p: 'Qual é o prazo médio para realizar um serviço?',
+    r: 'O orçamento em PDF informa o prazo de cada serviço. A média é de cerca de 30 dias, conforme cada caso.',
+  },
+  {
+    p: 'Que informações ajudam a pedir um orçamento?',
+    r: 'O tipo de serviço, o local onde será feito, as medidas aproximadas e fotos do ambiente, se houver. Com isso, a equipe avalia a necessidade e define se a visita técnica acontece antes do orçamento.',
   },
   {
     p: 'A empresa atende projetos industriais e residenciais?',

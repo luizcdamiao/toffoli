@@ -9,13 +9,14 @@ interface Props {
   id: string;
   titulo: string;
   intro: string;
+  detalhes?: string[];
   grupos: Grupo[];
   tom: 'clara' | 'escura' | 'cinza';
   inverso?: boolean;
   chaveFoto: string;
   altFoto: string;
 }
-const { id, titulo, intro, grupos, tom, inverso = false, chaveFoto, altFoto } = Astro.props;
+const { id, titulo, intro, detalhes = [], grupos, tom, inverso = false, chaveFoto, altFoto } = Astro.props;
 const imagem = foto(chaveFoto);
 ---
 
@@ -25,6 +26,7 @@ const imagem = foto(chaveFoto);
       <p class="eyebrow">Serviço principal</p>
       <h2 id={`${id}-t`}>{titulo}</h2>
       <p class="lead" style="margin-top:18px">{intro}</p>
+      {detalhes.map((d, i) => <p class="texto" style={i === 0 ? 'margin-top:16px' : undefined}>{d}</p>)}
       {
         grupos.map((g) => (
           <div class="grupo">

@@ -64,6 +64,7 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 .escura .lead { color: #c9d5e2; }
 .texto { max-width: 62ch; color: #3b444e; }
 .texto + .texto { margin-top: 1em; }
+.escura .texto { color: #c9d5e2; }
 
 /* ---------- Seções ---------- */
 .secao { padding-block: var(--secao); }

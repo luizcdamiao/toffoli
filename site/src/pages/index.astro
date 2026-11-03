@@ -15,7 +15,7 @@ import {
 
 const titulo = 'Estruturas Metálicas e Caldeiraria em Andradas, MG | Toffoli & Antônio';
 const descricao =
-  'Estruturas metálicas, coberturas e caldeiraria industrial em Andradas, MG. Atuação no setor há mais de 30 anos, atendendo indústrias, agronegócio e clientes residenciais na região.';
+  'Estruturas metálicas e caldeiraria em Andradas, MG: barracões, coberturas, silos e tanques. Há mais de 30 anos no setor. Peça seu orçamento pelo WhatsApp.';
 
 const fotoHero = foto('hero');
 const fotoEmpresa = foto('empresa');
@@ -48,7 +48,7 @@ const lista = (itens: string[]) => {
       }
       <div class="wrap hero__grade">
         <div>
-          <h1 id="h1">Estruturas Metálicas e Caldeiraria</h1>
+          <h1 id="h1">Estruturas Metálicas e Caldeiraria em Andradas, MG</h1>
           <p class="hero__apoio">
             Soluções para indústrias, agronegócio e projetos residenciais, com experiência e compromisso em cada trabalho.
           </p>
@@ -75,7 +75,7 @@ const lista = (itens: string[]) => {
       <div class="wrap empresa__grade">
         <div class="rev">
           <p class="eyebrow">A empresa</p>
-          <h2 id="empresa-t">Estruturas metálicas e caldeiraria no Sul de Minas</h2>
+          <h2 id="empresa-t">Estruturas metálicas e caldeiraria em Andradas e no Sul de Minas</h2>
           <p class="lead" style="margin-top:20px">
             A Toffoli &amp; Antônio trabalha com estruturas metálicas e caldeiraria em Andradas, no Sul de Minas, e atende
             indústrias, propriedades rurais e clientes residenciais da região.
@@ -105,13 +105,21 @@ const lista = (itens: string[]) => {
     <!-- SERVIÇOS PRINCIPAIS -->
     <div id="servicos">
       <ServicoBloco
-        id="estruturas-metalicas" titulo="Estruturas Metálicas" tom="cinza"
+        id="estruturas-metalicas" titulo="Estruturas metálicas em Andradas e região" tom="cinza"
         intro="Estruturas para cobrir, proteger e dar uso ao espaço de trabalho. Os barracões atendem a produção industrial e a rotina do campo; as coberturas podem usar telha galvanizada simples ou termoacústica, com forro e fechamento lateral quando o projeto pede."
+        detalhes={[
+          'Um barracão metálico é montado com pilares, vigas e tesouras de aço que sustentam a cobertura e deixam o espaço interno livre, o que facilita a circulação de máquinas, veículos e estoque.',
+          'A telha galvanizada simples é a opção mais direta para cobrir. A termoacústica leva uma camada isolante entre as chapas e costuma ser escolhida quando calor e ruído pesam no ambiente. Forro e fechamento lateral completam o acabamento, e a equipe orienta a escolha conforme o uso do espaço e o orçamento.',
+        ]}
         grupos={estruturas} chaveFoto="estruturas-metalicas" altFoto="Estrutura metálica com cobertura executada pela Toffoli & Antônio"
       />
       <ServicoBloco
-        id="caldeiraria" titulo="Caldeiraria" tom="escura" inverso
+        id="caldeiraria" titulo="Caldeiraria industrial em Andradas e região" tom="escura" inverso
         intro="Peças e estruturas metálicas para a rotina da indústria: plataformas e escadas para acessar equipamentos durante a manutenção, apoios para máquinas, coifas, dutos, silos, tanques, caldeiras e chaminés, além de adaptações e manutenções industriais."
+        detalhes={[
+          'Caldeiraria é o trabalho de cortar, dobrar, soldar e montar chapas e perfis de aço para fabricar peças sob medida. Na indústria, isso aparece em tanques, silos, dutos, coifas e chaminés, que armazenam, conduzem ou captam materiais e ar.',
+          'Plataformas, escadas e corrimãos dão acesso a equipamentos na hora da manutenção; estruturas para máquinas e bancadas apoiam a operação; adaptações e manutenções ajustam o que já existe na planta. A equipe possui treinamentos em NR 06, NR 12, NR 34 e NR 35, que muitas empresas exigem de prestadores de serviço.',
+        ]}
         grupos={caldeiraria} chaveFoto="caldeiraria" altFoto="Serviço de caldeiraria executado pela Toffoli & Antônio"
       />
     </div>
@@ -121,7 +129,7 @@ const lista = (itens: string[]) => {
       <div class="wrap outras__grade">
         <div class="rev">
           <p class="eyebrow">Também realizamos</p>
-          <h2 id="outras-t">Outras soluções</h2>
+          <h2 id="outras-t">Outras soluções para casas e propriedades em Andradas e região</h2>
           <p class="texto" style="margin-top:16px">
             Além das duas especialidades, a equipe realiza serviços para casas e propriedades, como telhados, pergolados, portões
             e grades, e serviços de usinagem em torno e fresa.
@@ -135,7 +143,7 @@ const lista = (itens: string[]) => {
     <section id="segmentos" class="secao cinza" aria-labelledby="seg-t">
       <div class="wrap">
         <p class="eyebrow">Quem atendemos</p>
-        <h2 id="seg-t">Segmentos e regiões atendidas</h2>
+        <h2 id="seg-t">Quem atendemos em Andradas e no Sul de Minas</h2>
         <div class="segmentos">
           {segmentos.map((s) => <article class="rev"><h3>{s.titulo}</h3><p>{s.texto}</p></article>)}
         </div>
@@ -152,7 +160,7 @@ const lista = (itens: string[]) => {
     <section id="como-trabalhamos" class="secao clara" aria-labelledby="proc-t">
       <div class="wrap">
         <p class="eyebrow">Atendimento</p>
-        <h2 id="proc-t">Como trabalhamos</h2>
+        <h2 id="proc-t">Como pedir orçamento de estrutura metálica ou caldeiraria</h2>
         <ol class="passos">
           {processo.map((p) => <li class="rev"><h3>{p.titulo}</h3><p>{p.texto}</p></li>)}
         </ol>
@@ -209,7 +217,7 @@ const lista = (itens: string[]) => {
     <section id="faq" class="secao clara" aria-labelledby="faq-t">
       <div class="wrap">
         <p class="eyebrow">Dúvidas</p>
-        <h2 id="faq-t">Perguntas frequentes</h2>
+        <h2 id="faq-t">Perguntas frequentes sobre estruturas metálicas e caldeiraria</h2>
         <div class="faq">
           {faq.map((f) => <details><summary>{f.p}</summary><p>{f.r}</p></details>)}
         </div>
@@ -221,7 +229,7 @@ const lista = (itens: string[]) => {
       <div class="wrap contato__grade">
         <div>
           <p class="eyebrow">Contato</p>
-          <h2 id="contato-t">Fale com a equipe</h2>
+          <h2 id="contato-t">Peça seu orçamento em Andradas, MG</h2>
           <p class="lead" style="margin-top:18px">
             Descreva o serviço de que você precisa. A equipe avalia a necessidade e, conforme o caso, faz uma visita técnica ou
             envia o orçamento em PDF. O formulário também recebe candidaturas e propostas de parceria.
