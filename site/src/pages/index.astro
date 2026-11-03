@@ -15,7 +15,7 @@ import {
 
 const titulo = 'Estruturas Metálicas e Caldeiraria em Andradas, MG | Toffoli & Antônio';
 const descricao =
-  'Estruturas metálicas, coberturas e caldeiraria industrial em Andradas, MG. Experiência na área desde 1994, atendendo indústrias, agronegócio e clientes residenciais na região.';
+  'Estruturas metálicas, coberturas e caldeiraria industrial em Andradas, MG. Atuação no setor há mais de 30 anos, atendendo indústrias, agronegócio e clientes residenciais na região.';
 
 const fotoHero = foto('hero');
 const fotoEmpresa = foto('empresa');
@@ -46,7 +46,7 @@ const lista = (itens: string[]) => {
             Soluções para indústrias, agronegócio e projetos residenciais, com experiência e compromisso em cada trabalho.
           </p>
           <a class="hero__link" href="#servicos">Conheça nossas soluções <span aria-hidden="true">↓</span></a>
-          <p class="hero__local">Desde 1994 · {empresa.endereco.cidade}, {empresa.endereco.uf}</p>
+          <p class="hero__local">{empresa.endereco.cidade}, {empresa.endereco.uf} · há mais de 30 anos</p>
         </div>
       </div>
     </section>
@@ -99,7 +99,7 @@ const lista = (itens: string[]) => {
               <Image src={escudo} alt="" width={240} loading="lazy" />
             )
           }
-          <p class="selo">Experiência na área<br /><strong>desde 1994</strong></p>
+          <p class="selo">Mais de 30 anos<br /><strong>de atuação</strong></p>
         </div>
       </div>
     </section>

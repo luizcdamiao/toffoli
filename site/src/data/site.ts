@@ -95,7 +95,7 @@ export const processo = [
 ];
 
 export const diferenciais = [
-  { titulo: 'Experiência na área', texto: 'Atuação no setor desde 1994.' },
+  { titulo: 'Experiência na área', texto: 'Mais de três décadas de trabalho no setor.' },
   { titulo: 'Qualidade dos serviços', texto: 'Qualidade nos serviços executados.' },
   { titulo: 'Atendimento pós-venda', texto: 'Atendimento depois da venda e da entrega do serviço.' },
   { titulo: 'Compromisso com o trabalho', texto: 'Compromisso com o trabalho em cada serviço.' },
