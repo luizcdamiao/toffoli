@@ -15,7 +15,7 @@ const itens = [
 <header class="header">
   <div class="wrap header__in">
     <a class="marca" href="/" aria-label={`${empresa.nome}, início`}>
-      <Image src={escudo} alt="" width={42} loading="eager" />
+      <Image src={escudo} alt="" width={42} densities={[1, 2]} loading="eager" />
       <span>
         <span class="marca__nome">{empresa.nome}</span>
         <span class="marca__sub">Estruturas Metálicas</span>

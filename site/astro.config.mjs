@@ -7,7 +7,7 @@ const site = process.env.SITE_URL || undefined;
 export default defineConfig({
   site,
   output: 'static',
-  adapter: node({ mode: 'standalone' }),
+  adapter: node({ mode: 'middleware' }),
   trailingSlash: 'never',
-  build: { inlineStylesheets: 'auto' },
+  build: { inlineStylesheets: 'always' },
 });

@@ -46,3 +46,7 @@ Se as URLs antigas estiverem indexadas, configure no proxy (Traefik/EasyPanel) r
 - `/servicos/serralheria` e `/servicos/maquinas-industriais` para `/#outras-solucoes`
 
 Verifique antes no Google Search Console se essas URLs realmente aparecem.
+
+## Servidor
+
+O container roda `server.mjs` (não o servidor padrão do Astro): ele comprime HTML, CSS e JS (brotli ou gzip), manda cache longo e imutável para `/_astro/` e adiciona cabeçalhos básicos de segurança. O restante (formulário, robots, sitemap) continua no Astro. Teste local: `npm run build && npm start`.
