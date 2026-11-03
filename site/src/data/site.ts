@@ -80,16 +80,19 @@ export const processo = [
     texto:
       'Conforme o serviço, a visita acontece antes do orçamento. Em outros casos, o orçamento vem primeiro e a visita ocorre depois da aprovação.',
   },
-  { titulo: 'Orçamento em PDF', texto: 'A proposta é enviada em PDF para sua análise.' },
+  {
+    titulo: 'Orçamento em PDF',
+    texto: 'A proposta é enviada em PDF e informa o prazo médio para a realização do serviço, de cerca de 30 dias, conforme cada caso.',
+  },
   { titulo: 'Aprovação e execução', texto: 'Aprovado o orçamento, o serviço é programado e executado.' },
 ];
 
 export const diferenciais = [
   { titulo: 'Experiência na área', texto: 'Atuação no setor desde 1994.' },
-  { titulo: 'Compromisso com o trabalho', texto: 'Cada serviço é tratado como responsabilidade da equipe, do início à entrega.' },
-  { titulo: 'Agilidade no atendimento', texto: 'Retorno rápido para entender a demanda e encaminhar o orçamento.' },
-  { titulo: 'Qualidade dos serviços', texto: 'Atenção à execução e ao acabamento do que é entregue.' },
-  { titulo: 'Atendimento após a entrega', texto: 'A equipe continua disponível depois que o serviço é concluído.' },
+  { titulo: 'Qualidade dos serviços', texto: 'Qualidade nos serviços executados.' },
+  { titulo: 'Atendimento pós-venda', texto: 'Atendimento depois da venda e da entrega do serviço.' },
+  { titulo: 'Compromisso com o trabalho', texto: 'Compromisso com o trabalho em cada serviço.' },
+  { titulo: 'Velocidade no atendimento', texto: 'Velocidade no atendimento ao cliente.' },
 ];
 
 export const treinamentos =
