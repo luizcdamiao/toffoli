@@ -3,17 +3,19 @@ import { Image } from 'astro:assets';
 import escudo from '../assets/escudo.png';
 import { foto } from '../data/fotos';
 
+import type { Grupo } from '../data/site';
+
 interface Props {
   id: string;
   titulo: string;
   intro: string;
-  itens: string[];
+  grupos: Grupo[];
   tom: 'clara' | 'escura' | 'cinza';
   inverso?: boolean;
   chaveFoto: string;
   altFoto: string;
 }
-const { id, titulo, intro, itens, tom, inverso = false, chaveFoto, altFoto } = Astro.props;
+const { id, titulo, intro, grupos, tom, inverso = false, chaveFoto, altFoto } = Astro.props;
 const imagem = foto(chaveFoto);
 ---
 
@@ -23,9 +25,14 @@ const imagem = foto(chaveFoto);
       <p class="eyebrow">Serviço principal</p>
       <h2 id={`${id}-t`}>{titulo}</h2>
       <p class="lead" style="margin-top:18px">{intro}</p>
-      <ul class="servico__lista">
-        {itens.map((i) => <li>{i}</li>)}
-      </ul>
+      {
+        grupos.map((g) => (
+          <div class="grupo">
+            <h3>{g.titulo}</h3>
+            <ul class="servico__lista">{g.itens.map((i) => <li>{i}</li>)}</ul>
+          </div>
+        ))
+      }
     </div>
     <div class={`painel rev ${imagem ? '' : 'painel--marca'}`}>
       {

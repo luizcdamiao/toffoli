@@ -84,11 +84,16 @@ const lista = (itens: string[]) => {
           <p class="eyebrow">A empresa</p>
           <h2 id="empresa-t">{empresa.experiencia}</h2>
           <p class="lead" style="margin-top:20px">
-            A Toffoli &amp; Antônio atua com estruturas metálicas e caldeiraria para indústrias, propriedades rurais e clientes
-            residenciais de Andradas e região.
+            A Toffoli &amp; Antônio trabalha com estruturas metálicas e caldeiraria em Andradas, no Sul de Minas, e atende
+            indústrias, propriedades rurais e clientes residenciais da região.
           </p>
           <p class="texto" style="margin-top:16px">
-            O trabalho é conduzido com compromisso, agilidade no atendimento e acompanhamento depois da entrega.
+            Do barracão à plataforma de manutenção, cada serviço parte de uma conversa: a equipe entende a necessidade, faz a
+            visita técnica quando o serviço pede e apresenta o orçamento em PDF antes de começar.
+          </p>
+          <p class="texto">
+            Compromisso com o trabalho, velocidade no atendimento e suporte depois da entrega são o que a empresa quer manter em
+            cada projeto.
           </p>
         </div>
         <div class={`painel rev empresa__foto ${fotoEmpresa ? '' : 'painel--marca'}`}>
@@ -108,13 +113,13 @@ const lista = (itens: string[]) => {
     <div id="servicos">
       <ServicoBloco
         id="estruturas-metalicas" titulo="Estruturas Metálicas" tom="cinza"
-        intro="Barracões industriais e para o agronegócio, estruturas de telhado e coberturas com telhas galvanizadas simples ou termoacústicas, com forro e fechamentos laterais."
-        itens={estruturas} chaveFoto="estruturas-metalicas" altFoto="Estrutura metálica com cobertura executada pela Toffoli & Antônio"
+        intro="Estruturas para cobrir, proteger e dar uso ao espaço de trabalho. Os barracões atendem a produção industrial e a rotina do campo; as coberturas podem usar telha galvanizada simples ou termoacústica, com forro e fechamento lateral quando o projeto pede."
+        grupos={estruturas} chaveFoto="estruturas-metalicas" altFoto="Estrutura metálica com cobertura executada pela Toffoli & Antônio"
       />
       <ServicoBloco
         id="caldeiraria" titulo="Caldeiraria" tom="escura" inverso
-        intro="Serviços de caldeiraria, adaptações e manutenções para o ambiente industrial."
-        itens={caldeiraria} chaveFoto="caldeiraria" altFoto="Serviço de caldeiraria executado pela Toffoli & Antônio"
+        intro="Peças e estruturas metálicas para a rotina da indústria: plataformas e escadas para acessar equipamentos durante a manutenção, apoios para máquinas, coifas, dutos, silos, tanques, caldeiras e chaminés, além de adaptações e manutenções industriais."
+        grupos={caldeiraria} chaveFoto="caldeiraria" altFoto="Serviço de caldeiraria executado pela Toffoli & Antônio"
       />
     </div>
 
@@ -124,6 +129,10 @@ const lista = (itens: string[]) => {
         <div class="rev">
           <p class="eyebrow">Também realizamos</p>
           <h2 id="outras-t">Outras soluções</h2>
+          <p class="texto" style="margin-top:16px">
+            Além das duas especialidades, a equipe realiza serviços para casas e propriedades, como telhados, pergolados, portões
+            e grades, e serviços de usinagem em torno e fresa.
+          </p>
         </div>
         <ul class="chips rev">{outrasSolucoes.map((s) => <li>{s}</li>)}</ul>
       </div>
@@ -161,7 +170,11 @@ const lista = (itens: string[]) => {
     <section id="diferenciais" class="secao escura" aria-labelledby="dif-t">
       <div class="wrap">
         <p class="eyebrow">Diferenciais</p>
-        <h2 id="dif-t">O que você encontra na Toffoli &amp; Antônio</h2>
+        <h2 id="dif-t">Por que contratar a Toffoli &amp; Antônio</h2>
+        <p class="lead" style="margin-top:18px">
+          Experiência na área desde 1994, qualidade nos serviços e atendimento pós-venda são os três pontos que a empresa
+          coloca em primeiro lugar. Compromisso com o trabalho e velocidade no atendimento completam a lista.
+        </p>
         <ul class="dif">
           {diferenciais.map((d) => <li class="rev"><h3>{d.titulo}</h3><p>{d.texto}</p></li>)}
         </ul>
@@ -218,7 +231,8 @@ const lista = (itens: string[]) => {
           <p class="eyebrow">Contato</p>
           <h2 id="contato-t">Fale com a equipe</h2>
           <p class="lead" style="margin-top:18px">
-            Para orçamentos, dúvidas, candidaturas ou propostas de parceria, use o formulário ou um dos contatos abaixo.
+            Descreva o serviço de que você precisa. A equipe avalia a necessidade e, conforme o caso, faz uma visita técnica ou
+            envia o orçamento em PDF. O formulário também recebe candidaturas e propostas de parceria.
           </p>
           <dl class="dados">
             <div><dt>WhatsApp e telefone</dt><dd><a href={`https://wa.me/${empresa.whatsapp}`} rel="noopener">{empresa.telefone}</a></dd></div>

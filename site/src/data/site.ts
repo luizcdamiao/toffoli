@@ -20,29 +20,29 @@ export const empresa = {
 
 export const whatsappUrl = `https://wa.me/${empresa.whatsapp}?text=${encodeURIComponent(empresa.whatsappMensagem)}`;
 
-export const estruturas = [
-  'Barracões industriais',
-  'Barracões para o agronegócio',
-  'Estruturas para telhados',
-  'Coberturas com telhas galvanizadas simples',
-  'Coberturas com telhas termoacústicas',
-  'Soluções com forro',
-  'Fechamentos laterais de estruturas com telhas',
+export type Grupo = { titulo: string; itens: string[] };
+
+export const estruturas: Grupo[] = [
+  { titulo: 'Barracões', itens: ['Barracões industriais', 'Barracões para o agronegócio'] },
+  {
+    titulo: 'Telhados e coberturas',
+    itens: [
+      'Estruturas para telhados',
+      'Coberturas com telhas galvanizadas simples',
+      'Coberturas com telhas termoacústicas',
+    ],
+  },
+  { titulo: 'Acabamentos', itens: ['Soluções com forro', 'Fechamentos laterais de estruturas com telhas'] },
 ];
 
-export const caldeiraria = [
-  'Plataformas para manutenção',
-  'Estruturas para máquinas',
-  'Coifas',
-  'Dutos',
-  'Silos',
-  'Tanques',
-  'Caldeiras',
-  'Chaminés',
-  'Escadas e corrimãos',
-  'Bancadas',
-  'Adaptações industriais',
-  'Manutenções industriais',
+export const caldeiraria: Grupo[] = [
+  {
+    titulo: 'Acesso e apoio',
+    itens: ['Plataformas para manutenção', 'Escadas e corrimãos', 'Bancadas', 'Estruturas para máquinas'],
+  },
+  { titulo: 'Captação e condução', itens: ['Coifas', 'Dutos', 'Chaminés'] },
+  { titulo: 'Reservatórios e equipamentos', itens: ['Silos', 'Tanques', 'Caldeiras'] },
+  { titulo: 'Sob demanda', itens: ['Adaptações industriais', 'Manutenções industriais'] },
 ];
 
 export const outrasSolucoes = [
@@ -55,9 +55,13 @@ export const outrasSolucoes = [
 ];
 
 export const segmentos = [
-  { titulo: 'Indústria', texto: 'Cerâmica, injeção plástica e empresas de componentes elétricos e plásticos.' },
-  { titulo: 'Agronegócio', texto: 'Barracões, coberturas e estruturas para propriedades rurais.' },
-  { titulo: 'Residencial', texto: 'Telhados, portões, grades e pergolados.' },
+  {
+    titulo: 'Indústria',
+    texto:
+      'Atendimento a indústrias de cerâmica, de injeção plástica e de componentes elétricos e plásticos, com serviços de caldeiraria e estruturas metálicas.',
+  },
+  { titulo: 'Agronegócio', texto: 'Barracões e coberturas para propriedades rurais.' },
+  { titulo: 'Residencial', texto: 'Telhados, pergolados, portões e grades para casas e propriedades.' },
 ];
 
 export const regioesPrincipais = [
@@ -73,8 +77,8 @@ export const regioesPrincipais = [
 export const regioesOcasionais = ['Ouro Fino, MG', 'Mogi Guaçu, SP', 'São João da Boa Vista, SP'];
 
 export const processo = [
-  { titulo: 'Contato', texto: 'Você fala com a equipe pelo formulário, WhatsApp ou e-mail.' },
-  { titulo: 'Avaliação', texto: 'Entendemos a necessidade e o que precisa ser feito.' },
+  { titulo: 'Contato', texto: 'Você fala com a equipe pelo formulário, WhatsApp ou e-mail e conta o que precisa.' },
+  { titulo: 'Avaliação', texto: 'A equipe avalia a necessidade para definir como o serviço será conduzido.' },
   {
     titulo: 'Visita técnica',
     texto:
@@ -84,7 +88,10 @@ export const processo = [
     titulo: 'Orçamento em PDF',
     texto: 'A proposta é enviada em PDF e informa o prazo médio para a realização do serviço, de cerca de 30 dias, conforme cada caso.',
   },
-  { titulo: 'Aprovação e execução', texto: 'Aprovado o orçamento, o serviço é programado e executado.' },
+  {
+    titulo: 'Aprovação e execução',
+    texto: 'Com o orçamento aprovado, o serviço é programado e executado. Depois da entrega, o atendimento pós-venda segue à disposição.',
+  },
 ];
 
 export const diferenciais = [
@@ -118,6 +125,14 @@ export const faq = [
   {
     p: 'Como solicitar um orçamento?',
     r: 'Entre em contato pelo formulário desta página, pelo WhatsApp ou por e-mail. A equipe avalia a necessidade e envia o orçamento em PDF.',
+  },
+  {
+    p: 'A empresa oferece atendimento depois da entrega do serviço?',
+    r: 'Sim. O atendimento pós-venda faz parte do trabalho da Toffoli & Antônio, junto com a experiência na área e a qualidade dos serviços.',
+  },
+  {
+    p: 'A equipe possui treinamentos em normas regulamentadoras?',
+    r: 'Sim. A equipe possui treinamentos relacionados às Normas Regulamentadoras NR 06, NR 12, NR 34 e NR 35, que muitas empresas exigem de prestadores de serviço.',
   },
   {
     p: 'Quais regiões são atendidas?',

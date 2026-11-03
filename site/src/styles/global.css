@@ -145,7 +145,10 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 
 /* ---------- Serviços principais ---------- */
 .servico__grade { display: grid; gap: 36px; align-items: start; }
-.servico__lista { margin-top: 28px; columns: 1; }
+.grupo { margin-top: 28px; }
+.grupo h3 { font: 600 0.75rem/1.2 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--cinza); }
+.escura .grupo h3 { color: #9fb3c8; }
+.servico__lista { margin-top: 10px; columns: 1; }
 .servico__lista li { padding: 12px 0 12px 22px; position: relative; border-top: 1px solid var(--linha); break-inside: avoid; }
 .servico__lista li::before { content: ''; position: absolute; left: 0; top: 1.3em; width: 10px; height: 2px; background: var(--azul-2); }
 .escura .servico__lista li { border-color: rgb(255 255 255 / 0.14); }
@@ -297,9 +300,14 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .dif li:first-child { border-left: 0; }
   .marca img { width: 42px; }
 
-  .hero__grade { padding-block: 120px 190px; }
+  /* Hero inteiro na primeira dobra: ocupa a altura da janela menos o cabeçalho; o fim fica livre para os cartões que sobem 64px. */
+  .hero__grade, .hero--foto .hero__grade { min-height: calc(100svh - var(--header-h)); padding-block: 40px 104px; gap: 28px; align-content: center; }
+  .hero h1 { font-size: clamp(2rem, min(5vw, 8.5vh), 3.5rem); }
+  .hero__apoio { margin-top: 16px; }
+  .hero__link { margin-top: 16px; }
+  .hero__local { margin-top: 18px; }
   .hero__arte { right: 4%; bottom: -12%; width: 460px; opacity: 0.2; }
-  .destaques { margin-top: -110px; }
+  .destaques { margin-top: -64px; }
   .hero__pontos { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
   .hero__pontos li { padding: 18px 0 0; border-bottom: 0; }
   .hero__foto::after { background: linear-gradient(90deg, rgb(0 30 61 / 0.92) 0%, rgb(0 30 61 / 0.62) 42%, rgb(0 30 61 / 0.12) 100%); }
