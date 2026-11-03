@@ -122,7 +122,7 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 .card--menor { border-top-color: var(--cinza); }
 .hero__foto { position: absolute; inset: 0; }
 .hero__foto img { width: 100%; height: 100%; object-fit: cover; }
-.hero__foto::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgb(0 30 61 / 0.92), rgb(0 30 61 / 0.55)); }
+.hero__foto::after { content: ''; position: absolute; inset: 0; background: rgb(0 30 61 / 0.72); }
 .hero--foto .hero__grade { position: relative; min-height: 70vh; }
 
 /* ---------- Empresa ---------- */
@@ -295,6 +295,7 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .hero__grade { padding-block: 120px 190px; }
   .hero__arte { right: 4%; bottom: -12%; width: 460px; opacity: 0.2; }
   .destaques { margin-top: -110px; }
+  .hero__foto::after { background: linear-gradient(90deg, rgb(0 30 61 / 0.92) 0%, rgb(0 30 61 / 0.62) 42%, rgb(0 30 61 / 0.12) 100%); }
   .empresa__grade { grid-template-columns: 5fr 6fr; gap: 80px; align-items: start; }
   .servico__grade { grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
   .servico--inverso .painel { order: 2; }
