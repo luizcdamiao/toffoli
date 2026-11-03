@@ -108,17 +108,13 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 }
 .hero__link:hover { border-color: var(--branco); }
 .hero__local { margin-top: 36px; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: #9fb3c8; }
-.hero__pontos { display: grid; border-top: 1px solid rgb(255 255 255 / 0.24); max-width: 820px; }
-.hero__pontos li { padding: 14px 0; border-bottom: 1px solid rgb(255 255 255 / 0.14); }
-.hero__pontos strong { display: block; font: 600 1rem/1.3 var(--sans); color: var(--branco); }
-.hero__pontos span { font-size: 0.8125rem; color: #c9d5e2; }
 
 /* Gráfico da marca como fundo enquanto não há foto real (ver src/data/fotos.ts) */
 .hero__arte { position: absolute; right: -14%; bottom: -8%; width: min(78%, 560px); opacity: 0.16; pointer-events: none; }
 .hero__arte img { width: 100%; height: auto; }
 
 /* ---------- Cartões sobrepostos ao hero ---------- */
-.destaques { position: relative; z-index: 2; margin-top: -88px; }
+.destaques { padding-block: 48px 8px; }
 .destaques__grade { display: grid; gap: 16px; }
 .card { background: var(--branco); border-radius: 8px; border-top: 3px solid var(--azul); padding: 28px 26px 26px; box-shadow: 0 12px 32px rgb(0 20 40 / 0.16); display: flex; flex-direction: column; gap: 10px; }
 .card p { color: #3b444e; font-size: 0.9375rem; flex: 1; }
@@ -301,15 +297,13 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .marca img { width: 42px; }
 
   /* Hero inteiro na primeira dobra: ocupa a altura da janela menos o cabeçalho; o fim fica livre para os cartões que sobem 64px. */
-  .hero__grade, .hero--foto .hero__grade { min-height: calc(100svh - var(--header-h)); padding-block: 40px 104px; gap: 28px; align-content: center; }
+  .hero__grade, .hero--foto .hero__grade { min-height: calc(100svh - var(--header-h)); padding-block: 40px 56px; gap: 28px; align-content: center; }
   .hero h1 { font-size: clamp(2rem, min(5vw, 8.5vh), 3.5rem); }
   .hero__apoio { margin-top: 16px; }
   .hero__link { margin-top: 16px; }
   .hero__local { margin-top: 18px; }
   .hero__arte { right: 4%; bottom: -12%; width: 460px; opacity: 0.2; }
-  .destaques { margin-top: -64px; }
-  .hero__pontos { grid-template-columns: repeat(2, 1fr); column-gap: 32px; max-width: 560px; }
-  .hero__pontos li { padding: 18px 0 0; border-bottom: 0; }
+  .destaques { padding-block: 72px 16px; }
   .hero__foto::after { background: linear-gradient(90deg, rgb(0 30 61 / 0.92) 0%, rgb(0 30 61 / 0.62) 42%, rgb(0 30 61 / 0.12) 100%); }
   .empresa__grade { grid-template-columns: 5fr 6fr; gap: 80px; align-items: start; }
   .servico__grade { grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
