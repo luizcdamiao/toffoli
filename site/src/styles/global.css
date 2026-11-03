@@ -308,7 +308,7 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .hero__local { margin-top: 18px; }
   .hero__arte { right: 4%; bottom: -12%; width: 460px; opacity: 0.2; }
   .destaques { margin-top: -64px; }
-  .hero__pontos { grid-template-columns: repeat(3, 1fr); column-gap: 32px; }
+  .hero__pontos { grid-template-columns: repeat(2, 1fr); column-gap: 32px; max-width: 560px; }
   .hero__pontos li { padding: 18px 0 0; border-bottom: 0; }
   .hero__foto::after { background: linear-gradient(90deg, rgb(0 30 61 / 0.92) 0%, rgb(0 30 61 / 0.62) 42%, rgb(0 30 61 / 0.12) 100%); }
   .empresa__grade { grid-template-columns: 5fr 6fr; gap: 80px; align-items: start; }
