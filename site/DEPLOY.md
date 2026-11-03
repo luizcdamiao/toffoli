@@ -7,7 +7,7 @@ Não tenho acesso ao seu EasyPanel; este roteiro é para quem administra o servi
 Crie um **novo serviço** (App) no EasyPanel. Não altere nem substitua o serviço `html-toffoli` que está no ar.
 
 - **Fonte:** GitHub, `luizcdamiao/toffoli` (privado: conecte o GitHub ao EasyPanel ou use uma chave de deploy), branch `main`.
-- **Build:** Dockerfile, caminho de build `site` (o `Dockerfile` está em `site/Dockerfile`).
+- **Build:** Dockerfile, com caminho de build na raiz do repositório (`/`). O `Dockerfile` fica na raiz e copia a pasta `site/`.
 - **Porta do serviço:** `4321`.
 - **Domínio:** um subdomínio de teste. Mantenha os padrões `SITE_ENV=staging` e `SITE_URL` vazio: a página sai com `noindex`, o `robots.txt` bloqueia tudo e não há canonical.
 - Nesta etapa as imagens `*.provisoria.jpg` funcionam normalmente.

@@ -21,7 +21,7 @@ npm start         # serve dist/ (Node)
 ## Publicação (Docker / EasyPanel)
 
 Homologação (padrão): `noindex`, `robots.txt` bloqueado, sem canonical.
-Produção: build com `SITE_URL=https://dominio-oficial` e `SITE_ENV=production` (ver `Dockerfile`).
+Produção: build com `SITE_URL=https://dominio-oficial` e `SITE_ENV=production` (ver `Dockerfile` na raiz).
 Isso ativa canonical, sitemap, `index, follow` e URLs absolutas.
 
 Variáveis de ambiente do formulário (somente no servidor, ver `.env.example`):
