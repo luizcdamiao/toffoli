@@ -289,9 +289,11 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .whatsapp-float[data-visible="true"]:hover { transform: translateY(-3px); }
   .whatsapp-float[data-visible="true"]:active { transform: scale(.97); }
 }
-/* Some enquanto a seção de contato está na tela, para não cobrir o formulário */
-html[data-em-contato="true"] .whatsapp-float { opacity: 0; visibility: hidden; pointer-events: none; }
-html[data-em-contato="true"] .topo-btn { display: none; }
+/* Só no celular, e só enquanto o formulário está na tela: aí os botões cobririam os campos */
+@media (max-width: 639px) {
+  html[data-em-contato="true"] .whatsapp-float { opacity: 0; visibility: hidden; pointer-events: none; }
+  html[data-em-contato="true"] .topo-btn { display: none; }
+}
 @keyframes whatsapp-ring { 0% { opacity: .9; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.35, 1.7); } }
 
 /* ---------- Voltar ao topo (aparece após a primeira tela) ---------- */

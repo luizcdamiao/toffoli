@@ -22,8 +22,8 @@ import { whatsappUrl } from '../data/site';
   if (botao && semBotao) {
     botao.remove();
   } else if (botao) {
-    // O CSS esconde este botão e a seta de voltar ao topo enquanto o contato está na tela.
-    const contato = document.getElementById('contato');
+    // No celular, o CSS esconde este botão e a seta de voltar ao topo enquanto o formulário está na tela.
+    const contato = document.getElementById('form-contato');
     if (contato && 'IntersectionObserver' in window) {
       new IntersectionObserver(([e]) => {
         document.documentElement.dataset.emContato = String(e.isIntersecting);
