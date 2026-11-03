@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import ServicoBloco from '../components/ServicoBloco.astro';
@@ -10,7 +10,7 @@ import escudo from '../assets/escudo.png';
 import { foto } from '../data/fotos';
 import {
   empresa, estruturas, caldeiraria, outrasSolucoes, segmentos, regioesPrincipais, regioesOcasionais,
-  processo, diferenciais, treinamentos, faq, produtos, projetos,
+  processo, diferenciais, treinamentos, faq, produtos, projetos, whatsappUrl,
 } from '../data/site';
 
 const titulo = 'Estruturas Metálicas e Caldeiraria em Andradas, MG | Toffoli & Antônio';
@@ -19,6 +19,8 @@ const descricao =
 
 const fotoHero = foto('hero');
 const fotoEmpresa = foto('empresa');
+// Mesmo srcset da <Image> do hero, para o navegador começar a baixar a foto já no <head>.
+const heroPreload = fotoHero ? await getImage({ src: fotoHero, widths: [640, 1024, 1600], sizes: '100vw' }) : undefined;
 const lista = (itens: string[]) => {
   const ini = itens.slice(0, -1).join(', ');
   return `${ini} e ${itens[itens.length - 1]}`;
@@ -26,6 +28,11 @@ const lista = (itens: string[]) => {
 ---
 
 <Base titulo={titulo} descricao={descricao}>
+  {
+    heroPreload && (
+      <link slot="head" rel="preload" as="image" href={heroPreload.src} imagesrcset={heroPreload.srcSet.attribute} imagesizes="100vw" fetchpriority="high" />
+    )
+  }
   <Header />
   <main id="conteudo">
     <!-- HERO -->
@@ -45,32 +52,23 @@ const lista = (itens: string[]) => {
           <p class="hero__apoio">
             Soluções para indústrias, agronegócio e projetos residenciais, com experiência e compromisso em cada trabalho.
           </p>
-          <a class="hero__link" href="#servicos">Conheça nossas soluções <span aria-hidden="true">↓</span></a>
+          <div class="hero__cta">
+            <a class="btn btn--claro" href="#contato">Solicitar orçamento</a>
+            <a class="hero__link" href="#servicos">Conheça nossas soluções <span aria-hidden="true">↓</span></a>
+          </div>
           <p class="hero__local">{empresa.experiencia} · {empresa.endereco.cidade}, {empresa.endereco.uf}</p>
         </div>
       </div>
     </section>
 
-    <!-- DESTAQUES (cartões sobre o hero) -->
-    <section class="destaques" aria-label="Áreas de atuação">
-      <div class="wrap destaques__grade">
-        <article class="card">
-          <h2 style="font:600 1.375rem/1.2 var(--serif)">Estruturas Metálicas</h2>
-          <p>Barracões industriais e rurais, estruturas para telhados e coberturas com telhas galvanizadas ou termoacústicas.</p>
-          <a href="#estruturas-metalicas">Ver detalhes</a>
-        </article>
-        <article class="card">
-          <h2 style="font:600 1.375rem/1.2 var(--serif)">Caldeiraria</h2>
-          <p>Plataformas, estruturas para máquinas, coifas, dutos, silos, tanques e manutenções industriais.</p>
-          <a href="#caldeiraria">Ver detalhes</a>
-        </article>
-        <article class="card card--menor">
-          <h2 style="font:600 1.375rem/1.2 var(--serif)">Outras soluções</h2>
-          <p>Telhados residenciais, pergolados, portões, grades e serviços de torno e fresa.</p>
-          <a href="#outras-solucoes">Ver detalhes</a>
-        </article>
-      </div>
-    </section>
+    <!-- ATALHOS PARA AS ÁREAS DE ATUAÇÃO -->
+    <nav class="areas" aria-label="Áreas de atuação">
+      <ul class="wrap areas__lista">
+        <li><a href="#estruturas-metalicas"><span><strong>Estruturas Metálicas</strong><em>Barracões, telhados e coberturas</em></span><b aria-hidden="true">→</b></a></li>
+        <li><a href="#caldeiraria"><span><strong>Caldeiraria</strong><em>Plataformas, silos, tanques e dutos</em></span><b aria-hidden="true">→</b></a></li>
+        <li><a href="#outras-solucoes"><span><strong>Outras soluções</strong><em>Telhados, pergolados, portões e grades</em></span><b aria-hidden="true">→</b></a></li>
+      </ul>
+    </nav>
 
     <!-- EMPRESA -->
     <section id="empresa" class="secao clara" aria-labelledby="empresa-t">
@@ -228,6 +226,7 @@ const lista = (itens: string[]) => {
             Descreva o serviço de que você precisa. A equipe avalia a necessidade e, conforme o caso, faz uma visita técnica ou
             envia o orçamento em PDF. O formulário também recebe candidaturas e propostas de parceria.
           </p>
+          <a class="btn btn--wa" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>
           <dl class="dados">
             <div><dt>WhatsApp e telefone</dt><dd><a href={`https://wa.me/${empresa.whatsapp}`} rel="noopener">{empresa.telefone}</a></dd></div>
             <div><dt>E-mail</dt><dd><a href={`mailto:${empresa.email}`}>{empresa.email}</a></dd></div>

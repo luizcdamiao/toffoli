@@ -81,7 +81,7 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 .marca { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); }
 .marca img { width: 36px; height: auto; }
 .marca__nome { font: 600 1.125rem/1.1 var(--serif); }
-.marca__sub { display: block; font: 500 0.625rem/1.2 var(--sans); letter-spacing: 0.18em; text-transform: uppercase; color: #9fb3c8; margin-top: 3px; }
+.marca__sub { display: block; font: 500 0.6875rem/1.2 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: #c9d5e2; margin-top: 3px; }
 
 .menu-btn {
   appearance: none; background: none; border: 1px solid rgb(255 255 255 / 0.3); color: var(--branco);
@@ -108,20 +108,25 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   color: var(--branco); text-decoration: none; font-weight: 500; border-bottom: 1px solid rgb(255 255 255 / 0.5);
 }
 .hero__link:hover { border-color: var(--branco); }
-.hero__local { margin-top: 36px; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: #9fb3c8; }
+.hero__local { margin-top: 36px; font-size: 0.875rem; letter-spacing: 0.06em; text-transform: uppercase; color: #e6edf5; text-shadow: 0 1px 6px rgb(0 20 40 / 0.7); }
+
+/* ---------- Atalhos das áreas (substituem os cartões repetidos) ---------- */
+.areas { background: var(--branco); border-bottom: 1px solid var(--linha); }
+.areas__lista { display: grid; }
+.areas li + li a { border-top: 1px solid var(--linha); }
+.areas a { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; padding: 14px 4px; text-decoration: none; color: var(--azul); }
+.areas strong { display: block; font: 600 1.0625rem/1.3 var(--serif); }
+.areas em { display: block; font-style: normal; font-size: 0.875rem; color: #3b444e; }
+.areas b { font-weight: 600; transition: transform 0.2s ease; }
+.areas a:hover { background: var(--cinza-claro); }
+.areas a:hover b { transform: translateX(4px); }
+.hero__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 28px; }
+.hero__cta .hero__link { margin-top: 0; }
 
 /* Gráfico da marca como fundo enquanto não há foto real (ver src/data/fotos.ts) */
 .hero__arte { position: absolute; right: -14%; bottom: -8%; width: min(78%, 560px); opacity: 0.16; pointer-events: none; }
 .hero__arte img { width: 100%; height: auto; }
 
-/* ---------- Cartões sobrepostos ao hero ---------- */
-.destaques { padding-block: 48px 8px; }
-.destaques__grade { display: grid; gap: 16px; }
-.card { background: var(--branco); border-radius: 8px; border-top: 3px solid var(--azul); padding: 28px 26px 26px; box-shadow: 0 12px 32px rgb(0 20 40 / 0.16); display: flex; flex-direction: column; gap: 10px; }
-.card p { color: #3b444e; font-size: 0.9375rem; flex: 1; }
-.card a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 600; font-size: 0.9375rem; color: var(--azul); text-decoration: none; border-bottom: 1px solid var(--azul); align-self: flex-start; }
-.card a:hover { color: var(--azul-2); }
-.card--menor { border-top-color: var(--cinza); }
 .hero__foto { position: absolute; inset: 0; }
 .hero__foto img { width: 100%; height: 100%; object-fit: cover; }
 .hero__foto::after { content: ''; position: absolute; inset: 0; background: rgb(0 30 61 / 0.72); }
@@ -211,7 +216,7 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 .dados { display: grid; gap: 22px; margin-top: 32px; font-style: normal; }
 .dados dt { font: 600 0.75rem/1.2 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--cinza); margin-bottom: 4px; }
 .dados dd { margin: 0; color: var(--grafite); }
-.dados a { text-underline-offset: 3px; }
+.dados a { display: inline-flex; align-items: center; min-height: 44px; text-underline-offset: 3px; }
 
 .form { display: grid; gap: 18px; }
 .form__duo { display: grid; gap: 18px; }
@@ -233,9 +238,13 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .btn {
   appearance: none; border: 0; cursor: pointer; justify-self: start; min-height: 48px; padding: 0 28px;
+  display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
   background: var(--azul); color: var(--branco); font: 600 1rem var(--sans); border-radius: 6px;
 }
 .btn:hover { background: var(--azul-2); }
+.btn--claro { background: var(--branco); color: var(--azul); }
+.btn--claro:hover { background: var(--cinza-claro); }
+.btn--wa { margin-top: 28px; }
 .btn[disabled] { opacity: 0.6; cursor: progress; }
 .status { padding: 14px 16px; border-radius: 6px; font-size: 0.9375rem; }
 .status:empty { display: none; }
@@ -248,7 +257,7 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
 .rodape__grade { display: grid; gap: 36px; }
 .rodape h2 { font: 600 0.75rem/1.2 var(--sans); letter-spacing: 0.14em; text-transform: uppercase; color: #9fb3c8; margin-bottom: 14px; }
 .rodape li + li { margin-top: 2px; }
-.rodape a { display: inline-block; padding: 6px 0; text-decoration: none; color: #e6edf5; }
+.rodape a { display: inline-flex; align-items: center; min-height: 44px; padding: 6px 0; text-decoration: none; color: #e6edf5; }
 .rodape a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .rodape address { font-style: normal; line-height: 1.7; }
 .rodape__fim { margin-top: 44px; padding-top: 22px; border-top: 1px solid rgb(255 255 255 / 0.12); font-size: 0.8125rem; color: #9fb3c8; display: grid; gap: 6px; }
@@ -272,6 +281,9 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .whatsapp-float[data-visible="true"]:hover { transform: translateY(-3px); }
   .whatsapp-float[data-visible="true"]:active { transform: scale(.97); }
 }
+/* Some enquanto a seção de contato está na tela, para não cobrir o formulário */
+html[data-em-contato="true"] .whatsapp-float { opacity: 0; visibility: hidden; pointer-events: none; }
+html[data-em-contato="true"] .topo-btn { display: none; }
 @keyframes whatsapp-ring { 0% { opacity: .9; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.35, 1.7); } }
 
 /* ---------- Voltar ao topo (aparece após a primeira tela) ---------- */
@@ -310,7 +322,6 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .nav { display: flex !important; position: static; padding: 0; border: 0; background: none; gap: 32px; }
   .nav a { padding: 8px 0; border: 0; font-size: 0.9375rem; }
   .nav a.nav__contato { margin: 0; padding: 10px 22px; }
-  .destaques__grade { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .dif { grid-template-columns: repeat(5, 1fr); padding: 12px 8px; }
   .dif li { padding: 24px 22px; border-top: 0; border-left: 1px solid var(--linha); }
   .dif li:first-child { border-left: 0; }
@@ -323,7 +334,8 @@ h3 { font: 600 1.125rem/1.3 var(--sans); color: var(--azul); }
   .hero__link { margin-top: 16px; }
   .hero__local { margin-top: 18px; }
   .hero__arte { right: 4%; bottom: -12%; width: 460px; opacity: 0.2; }
-  .destaques { padding-block: 72px 16px; }
+  .areas__lista { grid-template-columns: repeat(3, 1fr); }
+  .areas li + li a { border-top: 0; border-left: 1px solid var(--linha); padding-inline: 24px; }
   .hero__foto::after { background: linear-gradient(90deg, rgb(0 30 61 / 0.92) 0%, rgb(0 30 61 / 0.62) 42%, rgb(0 30 61 / 0.12) 100%); }
   .empresa__grade { grid-template-columns: 5fr 6fr; gap: 80px; align-items: start; }
   .servico__grade { grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
