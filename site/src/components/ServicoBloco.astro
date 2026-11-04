@@ -66,10 +66,10 @@ const imagem = foto(chaveFoto);
       destaques.length > 0 && (
         <div class="infos">
           {destaques.map((d) => (
-            <article class="info rev">
-              <h3>{d.titulo}</h3>
+            <details class="info rev">
+              <summary>{d.titulo}</summary>
               <ul class="checks">{d.itens.map((i) => <li>{i}</li>)}</ul>
-            </article>
+            </details>
           ))}
         </div>
       )

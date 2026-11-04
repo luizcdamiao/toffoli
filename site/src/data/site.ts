@@ -79,8 +79,8 @@ export const segmentos = [
     texto:
       'Atendimento a indústrias de cerâmica, de injeção plástica e de componentes elétricos e plásticos, com serviços de caldeiraria e estruturas metálicas.',
   },
-  { titulo: 'Agronegócio', foto: 'estruturas-metalicas', texto: 'Barracões e coberturas para propriedades rurais.' },
-  { titulo: 'Residencial', foto: 'outras-pergolados', texto: 'Telhados, pergolados, portões e grades para casas e propriedades.' },
+  { titulo: 'Agronegócio', foto: 'segmento-agronegocio', texto: 'Barracões e coberturas para propriedades rurais.' },
+  { titulo: 'Residencial', foto: 'segmento-residencial', texto: 'Telhados, pergolados, portões e grades para casas e propriedades.' },
 ];
 
 export const regioesPrincipais = [
