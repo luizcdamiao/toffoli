@@ -9,7 +9,7 @@ import WhatsApp from '../components/WhatsApp.astro';
 import escudo from '../assets/escudo.png';
 import { foto } from '../data/fotos';
 import {
-  empresa, estruturas, caldeiraria, outrasSolucoes, segmentos, regioesPrincipais, regioesOcasionais,
+  empresa, estruturas, caldeiraria, outrasTiles, segmentos, regioesPrincipais, regioesOcasionais,
   processo, diferenciais, treinamentos, faq, produtos, projetos, whatsappUrl, google,
 } from '../data/site';
 
@@ -21,6 +21,14 @@ const fotoHero = foto('hero');
 const fotoEmpresa = foto('empresa');
 // Mesmo srcset da <Image> do hero, para o navegador começar a baixar a foto já no <head>.
 const heroPreload = fotoHero ? await getImage({ src: fotoHero, widths: [640, 1024, 1600], sizes: '100vw' }) : undefined;
+const fotoCta = foto('caldeiraria');
+const icones: Record<string, string> = {
+  award: '<circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/>',
+  check: '<path d="M22 11.1V12a10 10 0 1 1-5.9-9.1"/><path d="m9 11 3 3L22 4"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/>',
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+  zap: '<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>',
+};
 const lista = (itens: string[]) => {
   const ini = itens.slice(0, -1).join(', ');
   return `${ini} e ${itens[itens.length - 1]}`;
@@ -95,7 +103,7 @@ const lista = (itens: string[]) => {
               <Image src={escudo} alt="" width={240} loading="lazy" />
             )
           }
-          <p class="selo">Mais de 30 anos<br /><strong>de experiência</strong></p>
+          <p class="selo selo--grande"><strong>30+</strong><span>anos de<br />experiência</span></p>
         </div>
       </div>
     </section>
@@ -126,7 +134,7 @@ const lista = (itens: string[]) => {
         grupos={estruturas} chaveFoto="estruturas-metalicas" altFoto="Estrutura metálica com cobertura executada pela Toffoli & Antônio"
       />
       <ServicoBloco
-        id="caldeiraria" titulo="Caldeiraria industrial" tom="escura"
+        id="caldeiraria" titulo="Caldeiraria industrial" tom="escura" faixa
         intro="Peças e estruturas metálicas para a rotina da indústria: plataformas e escadas para acessar equipamentos durante a manutenção, apoios para máquinas, coifas, dutos, silos, tanques, caldeiras e chaminés, além de adaptações e manutenções industriais."
         destaques={[
           {
@@ -152,7 +160,7 @@ const lista = (itens: string[]) => {
 
     <!-- OUTRAS SOLUÇÕES -->
     <section id="outras-solucoes" class="secao clara" aria-labelledby="outras-t">
-      <div class="wrap outras__grade">
+      <div class="wrap">
         <div class="rev">
           <p class="eyebrow">Também realizamos</p>
           <h2 id="outras-t">Outras soluções para casas e propriedades</h2>
@@ -161,7 +169,22 @@ const lista = (itens: string[]) => {
             e grades, e serviços de usinagem em torno e fresa.
           </p>
         </div>
-        <ul class="chips rev">{outrasSolucoes.map((s) => <li>{s}</li>)}</ul>
+        <ul class="tiles">
+          {
+            outrasTiles.map((t) => {
+              const f = foto(t.foto);
+              return (
+                <li class={`tile rev ${f ? '' : 'tile--marca'}`}>
+                  {f ? <Image src={f} alt={t.titulo} widths={[480, 720, 960]} sizes="(min-width: 980px) 380px, 92vw" loading="lazy" /> : <Image src={escudo} alt="" width={160} loading="lazy" />}
+                  <div class="tile__txt">
+                    <h3>{t.titulo}</h3>
+                    <p>{t.texto}</p>
+                  </div>
+                </li>
+              );
+            })
+          }
+        </ul>
       </div>
     </section>
 
@@ -171,13 +194,30 @@ const lista = (itens: string[]) => {
         <p class="eyebrow">Quem atendemos</p>
         <h2 id="seg-t">Atendemos Minas Gerais e o interior de São Paulo</h2>
         <div class="segmentos">
-          {segmentos.map((s) => <article class="rev"><h3>{s.titulo}</h3><p>{s.texto}</p></article>)}
+          {
+            segmentos.map((s) => {
+              const f = foto(s.foto);
+              return (
+                <article class="seg rev">
+                  <div class={`seg__foto ${f ? '' : 'seg__foto--marca'}`}>
+                    {f ? <Image src={f} alt={s.titulo} widths={[480, 720]} sizes="(min-width: 980px) 360px, 92vw" loading="lazy" /> : <Image src={escudo} alt="" width={120} loading="lazy" />}
+                  </div>
+                  <div class="seg__txt">
+                    <h3>{s.titulo}</h3>
+                    <p>{s.texto}</p>
+                  </div>
+                </article>
+              );
+            })
+          }
         </div>
         <div class="regioes rev">
           <h3>Onde atuamos</h3>
-          <p>
-            Atendemos principalmente {lista(regioesPrincipais)}. Com menor frequência, também atuamos em {lista(regioesOcasionais)}.
-          </p>
+          <ul class="chips">
+            {regioesPrincipais.map((c) => <li>{c}</li>)}
+            {regioesOcasionais.map((c) => <li class="chip--leve">{c}</li>)}
+          </ul>
+          <p class="regioes__nota">Atendimento principal nas cidades em destaque. Nas demais, com menor frequência.</p>
         </div>
       </div>
     </section>
@@ -202,7 +242,17 @@ const lista = (itens: string[]) => {
           Cinco pontos que a empresa coloca em primeiro lugar em cada serviço, do primeiro contato ao atendimento depois da entrega.
         </p>
         <ul class="dif">
-          {diferenciais.map((d) => <li class="rev"><h3>{d.titulo}</h3><p>{d.texto}</p></li>)}
+          {
+            diferenciais.map((d) => (
+              <li class="rev">
+                <span class="dif__ico" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={icones[d.icone]} />
+                </span>
+                <h3>{d.titulo}</h3>
+                <p>{d.texto}</p>
+              </li>
+            ))
+          }
         </ul>
         <p class="treino">{treinamentos}</p>
       </div>
@@ -238,6 +288,19 @@ const lista = (itens: string[]) => {
         </section>
       )
     }
+
+    <!-- FAIXA DE ORÇAMENTO -->
+    <section class="faixa-cta" aria-labelledby="cta-t">
+      {fotoCta && <Image class="faixa-cta__img" src={fotoCta} alt="" widths={[960, 1600]} sizes="100vw" loading="lazy" />}
+      <div class="wrap faixa-cta__in">
+        <h2 id="cta-t">Conte o que você precisa e receba o orçamento em PDF</h2>
+        <p>A equipe avalia a necessidade e, conforme o serviço, faz a visita técnica antes ou depois do orçamento.</p>
+        <div class="faixa-cta__acoes">
+          <a class="btn btn--claro" href="#contato">Solicitar orçamento</a>
+          <a class="hero__link" href={whatsappUrl} target="_blank" rel="noopener noreferrer">Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </section>
 
     <!-- FAQ -->
     <section id="faq" class="secao clara" aria-labelledby="faq-t">

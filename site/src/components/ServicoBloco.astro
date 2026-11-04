@@ -13,16 +13,23 @@ interface Props {
   /** Blocos de explicação curtos, em bullets, abaixo dos cartões de grupos. */
   destaques?: Grupo[];
   nota?: string;
+  /** Foto como fundo da seção, com o texto por cima (sem painel lateral). */
+  faixa?: boolean;
   tom: 'clara' | 'escura' | 'cinza';
   inverso?: boolean;
   chaveFoto: string;
   altFoto: string;
 }
-const { id, titulo, intro, grupos, destaques = [], nota, tom, inverso = false, chaveFoto, altFoto } = Astro.props;
+const { id, titulo, intro, grupos, destaques = [], nota, faixa = false, tom, inverso = false, chaveFoto, altFoto } = Astro.props;
 const imagem = foto(chaveFoto);
 ---
 
-<section id={id} class={`secao ${tom} servico ${inverso ? 'servico--inverso' : ''}`} aria-labelledby={`${id}-t`}>
+<section id={id} class={`secao ${tom} servico ${inverso ? 'servico--inverso' : ''} ${faixa && imagem ? 'servico--faixa' : ''}`} aria-labelledby={`${id}-t`}>
+  {
+    faixa && imagem && (
+      <Image class="faixa__img" src={imagem} alt={altFoto} widths={[960, 1600]} sizes="100vw" loading="lazy" />
+    )
+  }
   <div class="wrap">
     <div class="servico__grade">
       <div class="rev">
@@ -30,21 +37,24 @@ const imagem = foto(chaveFoto);
         <h2 id={`${id}-t`}>{titulo}</h2>
         <p class="lead" style="margin-top:18px">{intro}</p>
       </div>
-      <div class={`painel rev ${imagem ? '' : 'painel--marca'}`}>
-        {
-          imagem ? (
-            <Image src={imagem} alt={altFoto} widths={[480, 720, 960]} sizes="(min-width: 980px) 560px, 92vw" loading="lazy" />
-          ) : (
-            <Image src={escudo} alt="" width={240} loading="lazy" />
-          )
-        }
-      </div>
+      {
+        !(faixa && imagem) && (
+          <div class={`painel rev ${imagem ? '' : 'painel--marca'}`}>
+            {imagem ? (
+              <Image src={imagem} alt={altFoto} widths={[480, 720, 960]} sizes="(min-width: 980px) 560px, 92vw" loading="lazy" />
+            ) : (
+              <Image src={escudo} alt="" width={240} loading="lazy" />
+            )}
+          </div>
+        )
+      }
     </div>
 
     <div class="cartoes">
       {
-        grupos.map((g) => (
+        grupos.map((g, n) => (
           <article class="cartao rev">
+            <span class="cartao__n" aria-hidden="true">{String(n + 1).padStart(2, '0')}</span>
             <h3>{g.titulo}</h3>
             <ul class="checks">{g.itens.map((i) => <li>{i}</li>)}</ul>
           </article>

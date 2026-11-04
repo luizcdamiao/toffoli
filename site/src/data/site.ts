@@ -65,14 +65,22 @@ export const outrasSolucoes = [
   'Serviços de fresa',
 ];
 
+// Três atalhos visuais para "Outras soluções". As fotos entram por chave em src/assets/fotos.
+export const outrasTiles = [
+  { titulo: 'Telhados e pergolados', texto: 'Telhados residenciais e pergolados para casas e propriedades.', foto: 'outras-pergolados' },
+  { titulo: 'Portões e grades', texto: 'Portões e grades sob encomenda para casas e propriedades.', foto: 'outras-portoes' },
+  { titulo: 'Torno e fresa', texto: 'Serviços de usinagem em torno e fresa.', foto: 'outras-torno' },
+];
+
 export const segmentos = [
   {
     titulo: 'Indústria',
+    foto: 'segmento-industria',
     texto:
       'Atendimento a indústrias de cerâmica, de injeção plástica e de componentes elétricos e plásticos, com serviços de caldeiraria e estruturas metálicas.',
   },
-  { titulo: 'Agronegócio', texto: 'Barracões e coberturas para propriedades rurais.' },
-  { titulo: 'Residencial', texto: 'Telhados, pergolados, portões e grades para casas e propriedades.' },
+  { titulo: 'Agronegócio', foto: 'estruturas-metalicas', texto: 'Barracões e coberturas para propriedades rurais.' },
+  { titulo: 'Residencial', foto: 'outras-pergolados', texto: 'Telhados, pergolados, portões e grades para casas e propriedades.' },
 ];
 
 export const regioesPrincipais = [
@@ -106,11 +114,11 @@ export const processo = [
 ];
 
 export const diferenciais = [
-  { titulo: 'Experiência na área', texto: 'Mais de três décadas de trabalho no setor.' },
-  { titulo: 'Qualidade dos serviços', texto: 'Qualidade nos serviços executados.' },
-  { titulo: 'Atendimento pós-venda', texto: 'Atendimento depois da venda e da entrega do serviço.' },
-  { titulo: 'Compromisso com o trabalho', texto: 'Compromisso com o trabalho em cada serviço.' },
-  { titulo: 'Velocidade no atendimento', texto: 'Velocidade no atendimento ao cliente.' },
+  { icone: 'award', titulo: 'Experiência na área', texto: 'Mais de três décadas de trabalho no setor.' },
+  { icone: 'check', titulo: 'Qualidade dos serviços', texto: 'Qualidade nos serviços executados.' },
+  { icone: 'wrench', titulo: 'Atendimento pós-venda', texto: 'Atendimento depois da venda e da entrega do serviço.' },
+  { icone: 'shield', titulo: 'Compromisso com o trabalho', texto: 'Compromisso com o trabalho em cada serviço.' },
+  { icone: 'zap', titulo: 'Velocidade no atendimento', texto: 'Velocidade no atendimento ao cliente.' },
 ];
 
 export const treinamentos =
