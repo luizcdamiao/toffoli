@@ -138,40 +138,8 @@ export const faq = [
     r: 'Plataformas para manutenção, estruturas para máquinas, coifas, dutos, silos, tanques, caldeiras, chaminés, escadas, corrimãos, bancadas, adaptações industriais e manutenções industriais.',
   },
   {
-    p: 'O que é caldeiraria?',
-    r: 'É o trabalho de cortar, dobrar, soldar e montar chapas e perfis de aço para fabricar peças e equipamentos sob medida, como tanques, silos, dutos, coifas e chaminés.',
-  },
-  {
-    p: 'Qual a diferença entre telha galvanizada simples e telha termoacústica?',
-    r: 'A galvanizada simples é uma chapa única de aço galvanizado. A termoacústica leva uma camada isolante entre as chapas e costuma ser escolhida quando calor e ruído pesam no ambiente. A equipe orienta a escolha conforme o uso do espaço e o orçamento.',
-  },
-  {
-    p: 'A empresa faz serviços de torno e fresa?',
-    r: 'Sim. Além de estruturas metálicas e caldeiraria, a Toffoli & Antônio realiza serviços de usinagem em torno e fresa.',
-  },
-  {
-    p: 'Qual é o prazo médio para realizar um serviço?',
-    r: 'O orçamento em PDF informa o prazo de cada serviço. A média é de cerca de 30 dias, conforme cada caso.',
-  },
-  {
-    p: 'Que informações ajudam a pedir um orçamento?',
-    r: 'O tipo de serviço, o local onde será feito, as medidas aproximadas e fotos do ambiente, se houver. Com isso, a equipe avalia a necessidade e define se a visita técnica acontece antes do orçamento.',
-  },
-  {
-    p: 'A empresa atende projetos industriais e residenciais?',
-    r: 'Sim. O trabalho é voltado principalmente a indústrias e ao agronegócio, e também atende demandas residenciais como telhados, portões, grades e pergolados.',
-  },
-  {
-    p: 'A Toffoli & Antônio realiza visitas técnicas?',
-    r: 'Sim, conforme o serviço. Em alguns casos a visita acontece antes do orçamento; em outros, o orçamento é preparado primeiro e a visita ocorre depois da aprovação.',
-  },
-  {
     p: 'Como solicitar um orçamento?',
     r: 'Entre em contato pelo formulário desta página, pelo WhatsApp ou por e-mail. A equipe avalia a necessidade e envia o orçamento em PDF.',
-  },
-  {
-    p: 'A empresa oferece atendimento depois da entrega do serviço?',
-    r: 'Sim. O atendimento pós-venda faz parte do trabalho da Toffoli & Antônio, junto com a experiência na área e a qualidade dos serviços.',
   },
   {
     p: 'A equipe possui treinamentos em normas regulamentadoras?',
